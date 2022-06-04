@@ -1,0 +1,93 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/lumberjack-app/src",
+  "prefix": "ngworker",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/lumberjack-app",
+        "index": "apps/lumberjack-app/src/index.html",
+        "main": "apps/lumberjack-app/src/main.ts",
+        "polyfills": "apps/lumberjack-app/src/polyfills.ts",
+        "tsConfig": "apps/lumberjack-app/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/lumberjack-app/src/favicon.ico",
+          "apps/lumberjack-app/src/assets"
+        ],
+        "styles": ["apps/lumberjack-app/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/lumberjack-app/src/environments/environment.ts",
+              "with": "apps/lumberjack-app/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "lumberjack-app:build:production"
+        },
+        "development": {
+          "browserTarget": "lumberjack-app:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "lumberjack-app:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/lumberjack-app/**/*.ts",
+          "apps/lumberjack-app/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/lumberjack-app"],
+      "options": {
+        "jestConfig": "apps/lumberjack-app/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

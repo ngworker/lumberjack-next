@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "lumberjack-app": "apps/lumberjack-app",
+    "lumberjack-app-e2e": "apps/lumberjack-app-e2e"
+  }
+}
