@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/ngworker/lumberjack/src",
+  "prefix": "ngworker",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/ngworker/lumberjack"],
+      "options": {
+        "project": "libs/ngworker/lumberjack/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ngworker/lumberjack/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/ngworker/lumberjack/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/ngworker/lumberjack"],
+      "options": {
+        "jestConfig": "libs/ngworker/lumberjack/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/ngworker/lumberjack/**/*.ts",
+          "libs/ngworker/lumberjack/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
