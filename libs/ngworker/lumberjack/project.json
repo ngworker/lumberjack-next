@@ -32,7 +32,11 @@
       "options": {
         "lintFilePatterns": [
           "libs/ngworker/lumberjack/**/*.ts",
-          "libs/ngworker/lumberjack/**/*.html"
+          "libs/ngworker/lumberjack/**/*.html",
+          "libs/ngworker/lumberjack/http-driver/**/*.ts",
+          "libs/ngworker/lumberjack/http-driver/**/*.html",
+          "libs/ngworker/lumberjack/console-driver/**/*.ts",
+          "libs/ngworker/lumberjack/console-driver/**/*.html"
         ]
       }
     }
