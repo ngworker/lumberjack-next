@@ -1,0 +1,14 @@
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import { isClass } from '@internal/test-util';
+
+import { LumberjackConsoleDriver } from './index';
+
+describe('Log drivers API', () => {
+  describe('Services', () => {
+    it(`exposes ${LumberjackConsoleDriver.name}`, () => {
+      const sut = LumberjackConsoleDriver;
+
+      expect(isClass(sut)).toBeTruthy();
+    });
+  });
+});

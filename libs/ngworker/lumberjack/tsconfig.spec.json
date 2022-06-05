@@ -5,6 +5,9 @@
     "module": "commonjs",
     "types": ["jest", "node"]
   },
+  "typeAcquisition": {
+    "enable": true,
+    "include": ["jest"]},
   "files": ["src/test-setup.ts"],
   "include": ["jest.config.ts", "**/*.test.ts", "**/*.spec.ts", "**/*.d.ts"]
 }
