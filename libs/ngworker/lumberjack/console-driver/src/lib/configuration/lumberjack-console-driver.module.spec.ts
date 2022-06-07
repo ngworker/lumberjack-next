@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { expectNgModuleToBeGuardedAgainstDirectImport, resolveDependency } from '@internal/test-util';
 import {
   lumberjackConfigToken,

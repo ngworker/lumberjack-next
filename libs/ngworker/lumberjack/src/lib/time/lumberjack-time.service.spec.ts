@@ -1,4 +1,3 @@
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { resolveDependency } from '@internal/test-util';
 
 import { LumberjackTimeService } from './lumberjack-time.service';

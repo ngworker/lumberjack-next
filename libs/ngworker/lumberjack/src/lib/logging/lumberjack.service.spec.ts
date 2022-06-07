@@ -1,4 +1,3 @@
-/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { StaticProvider } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 

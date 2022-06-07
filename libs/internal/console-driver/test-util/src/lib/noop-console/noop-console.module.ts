@@ -1,4 +1,3 @@
-/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 import { lumberjackConsoleToken } from '@ngworker/lumberjack/console-driver';

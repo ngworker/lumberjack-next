@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { LumberjackConsole } from '@ngworker/lumberjack/console-driver';
 
 /**

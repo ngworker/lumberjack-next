@@ -1,8 +1,6 @@
-/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
-
 
 import { LumberjackConsole } from '@ngworker/lumberjack/console-driver';
 
