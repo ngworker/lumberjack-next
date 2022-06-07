@@ -2,7 +2,6 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 import { TestBed } from '@angular/core/testing';
 import { VERSION } from '@angular/platform-browser';
 
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { createCriticalDriverLog, createDriverLog, repeatSideEffect, resolveDependency } from '@internal/test-util';
 import {
   LumberjackLevel,

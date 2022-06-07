@@ -1,4 +1,3 @@
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { isClass } from '@internal/test-util';
 
 import { LumberjackConsoleDriver } from './index';

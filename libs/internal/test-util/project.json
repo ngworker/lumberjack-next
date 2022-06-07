@@ -3,6 +3,22 @@
   "sourceRoot": "libs/internal/test-util/src",
   "prefix": "ngworker",
   "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/internal/test-util"],
+      "options": {
+        "project": "libs/internal/test-util/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/internal/test-util/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/internal/test-util/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/internal/test-util"],
@@ -14,10 +30,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/internal/test-util/**/*.ts",
-          "libs/internal/test-util/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/internal/test-util/**/*.ts", "libs/internal/test-util/**/*.html"]
       }
     }
   },

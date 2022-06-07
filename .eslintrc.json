@@ -27,6 +27,12 @@
       "rules": { "@typescript-eslint/ban-ts-comment": "off" }
     },
     {
+      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+      "rules": {
+        "@nrwl/nx/enforce-module-boundaries": "off"
+      }
+    },
+    {
       "files": ["*.js", "*.jsx"],
       "extends": ["plugin:@nrwl/nx/javascript"],
       "rules": {}

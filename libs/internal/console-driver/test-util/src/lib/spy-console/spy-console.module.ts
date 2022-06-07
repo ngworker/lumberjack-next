@@ -1,6 +1,5 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { lumberjackConsoleToken } from '@ngworker/lumberjack/console-driver';
 
 import { SpyConsole } from './spy-console.service';
