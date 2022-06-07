@@ -4,7 +4,20 @@ on:
   push:
     branches:
       - main
-  pull_request:
+  pull_request: {}
+
+concurrency:
+  # Group concurrency on workflow, then:
+  # - Is merge run? Group `push` events
+  # - Is pull request? Group `pull_request` events
+  group: >-
+    ${{ github.workflow }}-${{
+      github.event_name == 'push'
+        && github.base_ref
+        || github.head_ref
+    }}
+  # Run merge runs in sequence. Cancel in progress pull request runs.
+  cancel-in-progress: ${{ github.event_name != 'push' }}
 
 env:
   NODE_OPTIONS: --max-old-space-size=6144
