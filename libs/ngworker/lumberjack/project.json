@@ -41,6 +41,5 @@
       }
     }
   },
-  "tags": [],
-  "implicitDependencies": ["!internal-console-driver-test-util", "!internal-test-util"]
+  "tags": []
 }

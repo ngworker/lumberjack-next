@@ -21,5 +21,6 @@
       }
     }
   },
-  "tags": ["type:test-util"]
+  "tags": ["type:test-util"],
+  "implicitDependencies": ["!ngworker-lumberjack"]
 }
