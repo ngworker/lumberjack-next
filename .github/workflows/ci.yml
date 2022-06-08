@@ -24,21 +24,33 @@ env:
   NODE_OPTIONS: --max-old-space-size=6144
 
 jobs:
-  main:
-    name: Nx Cloud - Main Job
+  # We're using Nx Cloud for Distributed Task Execution
+  # Reference: https://nx.dev/using-nx/dte
+  #
+  # The coordinator outputs the combination of task outputs from the agents,
+  # both terminal and file outputs
+  dte_coordinator:
+    name: 'Distributed Task Execution: Nx Cloud Coordinator'
     uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.4
     with:
+      # Commands run in parallel on this Nx Cloud coordinator
       parallel-commands: |
         yarn nx-cloud record -- yarn nx workspace-lint
         yarn nx-cloud record -- yarn nx format:check
+      # Commands distributed between Nx Cloud agents
       parallel-commands-on-agents: |
         yarn nx affected --target=lint --parallel=2
         yarn nx affected --target=test --parallel=2 --ci --code-coverage
         yarn nx affected --target=build --parallel=2
         yarn nx affected --target=e2e --parallel=1
 
-  agents:
-    name: Nx Cloud - Agents
+  # We're using Nx Cloud for Distributed Task Execution
+  # Reference: https://nx.dev/using-nx/dte
+  #
+  # Agents receive tasks to execute in bulk whenever they are ready or finished
+  # with previous tasks
+  dte_agents:
+    name: 'Distributed Task Execution: Nx Cloud Agents'
     uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.4
     with:
       # The Free GitHub plan has a limit of 20 concurrent jobs on Ubuntu images
