@@ -13,7 +13,7 @@ concurrency:
   group: >-
     ${{ github.workflow }}-${{
       github.event_name == 'push'
-        && github.base_ref
+        && github.ref
         || github.head_ref
     }}
   # Run merge workflows in sequence to prevent parallel deployments and releases
