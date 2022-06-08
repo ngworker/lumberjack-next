@@ -13,10 +13,7 @@
         "polyfills": "apps/lumberjack-app/src/polyfills.ts",
         "tsConfig": "apps/lumberjack-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/lumberjack-app/src/favicon.ico",
-          "apps/lumberjack-app/src/assets"
-        ],
+        "assets": ["apps/lumberjack-app/src/favicon.ico", "apps/lumberjack-app/src/assets"],
         "styles": ["apps/lumberjack-app/src/styles.scss"],
         "scripts": []
       },
@@ -74,10 +71,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "apps/lumberjack-app/**/*.ts",
-          "apps/lumberjack-app/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/lumberjack-app/**/*.ts", "apps/lumberjack-app/**/*.html"]
       }
     },
     "test": {

@@ -1,12 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { LumberjackLevel, LumberjackModule } from '@ngworker/lumberjack';
+import { LumberjackConsoleDriverModule } from '@ngworker/lumberjack/console-driver';
+import { LumberjackHttpDriverModule } from '@ngworker/lumberjack/http-driver';
+
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
-  imports: [BrowserModule],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    LumberjackModule.forRoot(),
+    LumberjackConsoleDriverModule.forRoot(),
+    LumberjackHttpDriverModule.forRoot({
+      levels: [LumberjackLevel.Error],
+      origin: 'ForestApp',
+      storeUrl: '/api/logs',
+      retryOptions: { maxRetries: 5, delayMs: 250 },
+    }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
