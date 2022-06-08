@@ -13,10 +13,7 @@
         "polyfills": "apps/lumberjack-app/src/polyfills.ts",
         "tsConfig": "apps/lumberjack-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/lumberjack-app/src/favicon.ico",
-          "apps/lumberjack-app/src/assets"
-        ],
+        "assets": ["apps/lumberjack-app/src/favicon.ico", "apps/lumberjack-app/src/assets"],
         "styles": ["apps/lumberjack-app/src/styles.scss"],
         "scripts": []
       },
@@ -49,6 +46,25 @@
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
+        },
+        "e2e-development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true,
+          "tsConfig": "apps/lumberjack-app/tsconfig.e2e.json"
+        },
+        "e2e-production": {
+          "tsConfig": "apps/lumberjack-app/tsconfig.e2e.json",
+          "fileReplacements": [
+            {
+              "replace": "apps/lumberjack-app/src/environments/environment.ts",
+              "with": "apps/lumberjack-app/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
         }
       },
       "defaultConfiguration": "production"
@@ -61,6 +77,12 @@
         },
         "development": {
           "browserTarget": "lumberjack-app:build:development"
+        },
+        "e2e-development": {
+          "browserTarget": "lumberjack-app:build:e2e-development"
+        },
+        "e2e-production": {
+          "browserTarget": "lumberjack-app:build:e2e-production"
         }
       },
       "defaultConfiguration": "development"
@@ -74,10 +96,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "apps/lumberjack-app/**/*.ts",
-          "apps/lumberjack-app/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/lumberjack-app/**/*.ts", "apps/lumberjack-app/**/*.html"]
       }
     },
     "test": {

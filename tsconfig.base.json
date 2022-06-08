@@ -17,15 +17,9 @@
     "paths": {
       "@internal/console-driver/test-util": ["libs/internal/console-driver/test-util/src/index.ts"],
       "@internal/test-util": ["libs/internal/test-util/src/index.ts"],
-      "@ngworker/lumberjack": ["dist/libs/ngworker/lumberjack", "libs/ngworker/lumberjack/src/index.ts"],
-      "@ngworker/lumberjack/console-driver": [
-        "dist/libs/ngworker/lumberjack/console-driver",
-        "libs/ngworker/lumberjack/console-driver/src/index.ts"
-      ],
-      "@ngworker/lumberjack/http-driver": [
-        "dist/libs/ngworker/lumberjack/http-driver",
-        "libs/ngworker/lumberjack/http-driver/src/index.ts"
-      ]
+      "@ngworker/lumberjack": ["libs/ngworker/lumberjack/src/index.ts"],
+      "@ngworker/lumberjack/console-driver": ["libs/ngworker/lumberjack/console-driver/src/index.ts"],
+      "@ngworker/lumberjack/http-driver": ["libs/ngworker/lumberjack/http-driver/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
