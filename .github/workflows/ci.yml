@@ -30,7 +30,7 @@ jobs:
   # The coordinator outputs the combination of task outputs from the agents,
   # both terminal and file outputs
   dte_coordinator:
-    name: 'Distributed Task Execution: Nx Cloud Coordinator'
+    name: DTE Coordinator
     uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.4
     with:
       # Commands run in parallel on this Nx Cloud coordinator
@@ -58,7 +58,7 @@ jobs:
   # Agents receive tasks to execute in bulk whenever they are ready or finished
   # with previous tasks
   dte_agents:
-    name: 'Distributed Task Execution: Nx Cloud Agents'
+    name: DTE Agents
     uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.4
     with:
       # The Free GitHub plan has a limit of 20 concurrent jobs on Ubuntu images
