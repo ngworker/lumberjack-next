@@ -41,10 +41,9 @@ jobs:
       parallel-commands-on-agents: |
         yarn nx affected --target=lint --parallel=2
         yarn nx affected --target=test --parallel=1 --ci --maxWorkers=2
-        yarn nx affected --target=build --parallel=2 --exclude=ngworker-lumberjack,lumberjack-app
+        yarn nx affected --target=build --parallel=2 --exclude=lumberjack-app
         yarn nx affected --target=e2e --parallel=1 --exclude=lumberjack-app-e2e
       final-commands: |
-        yarn nx build ngworker-lumberjack
         yarn delete-path-alias @ngworker/lumberjack
         yarn delete-path-alias @ngworker/lumberjack/console-driver
         yarn delete-path-alias @ngworker/lumberjack/http-driver
