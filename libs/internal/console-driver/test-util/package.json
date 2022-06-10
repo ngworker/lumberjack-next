@@ -1,7 +1,0 @@
-{
-  "name": "@ngworker/internal/console-driver/test-util",
-  "version": "0.0.0",
-  "dependencies": {
-    "tslib": "^2.3.0"
-  }
-}

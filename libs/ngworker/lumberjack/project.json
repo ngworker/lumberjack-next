@@ -41,6 +41,6 @@
       }
     }
   },
-  "tags": [],
+  "tags": ["scope:public", "type:lib"],
   "implicitDependencies": ["!internal-console-driver-test-util", "!internal-test-util"]
 }

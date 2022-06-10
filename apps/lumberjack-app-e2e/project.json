@@ -23,6 +23,6 @@
       }
     }
   },
-  "tags": [],
+  "tags": ["scope:internal", "type:e2e"],
   "implicitDependencies": ["lumberjack-app"]
 }

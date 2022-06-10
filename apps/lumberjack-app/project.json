@@ -83,5 +83,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["scope:internal", "type:app"]
 }
