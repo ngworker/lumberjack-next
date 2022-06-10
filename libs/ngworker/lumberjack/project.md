@@ -1,3 +1,3 @@
-# build target
+# implicitDependencies
 
-The `build` target is output to the `apps/lumberjack-app/node_modules/@ngworker/lumberjack` directory to use a real bundle in end-to-end tests.
+The test utility libraries are removed from the dependency graph to prevent circular dependencies from breaking the build because of test suites using these libraries. A lint rule prevents non-test files from using them so that the dependency graph is accurate when considering library source code.

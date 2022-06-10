@@ -1,6 +1,6 @@
 {
   "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../../apps/lumberjack-app/node_modules/@ngworker/lumberjack",
+  "dest": "../../../dist/libs/ngworker/lumberjack",
   "lib": {
     "entryFile": "src/index.ts"
   }
