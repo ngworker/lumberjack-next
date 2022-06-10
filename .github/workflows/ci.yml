@@ -38,12 +38,18 @@ jobs:
         yarn nx-cloud record -- yarn nx workspace-lint
         yarn nx-cloud record -- yarn nx format:check
       # Commands distributed between DTE agents
+      # Distribution strategy for 2 vCPUs per hosted runner (GitHub Free):
+      # lint: 2 tasks assigned at a time, 1 task per vCPU
+      # test: 1 task assigned at a time with 2 parallel processes, 1 process per vCPU
+      # build: 2 tasks assigned at a time, 1 task per vCPU
+      # e2e: 1 task assigned at a time, 1 task total
       parallel-commands-on-agents: |
         yarn nx affected --target=lint --parallel=2
         yarn nx affected --target=test --parallel=1 --ci --maxWorkers=2
         yarn nx affected --target=build --parallel=2
         yarn nx affected --target=e2e --exclude=lumberjack-app-e2e --parallel=1
       # Commands run sequentially on this DTE coordinator after parallel jobs
+      # For the end-to-end test of our application, we use the output bundle
       final-commands: |
         NX_CLOUD_DISTRIBUTED_EXECUTION=false yarn nx run lumberjack-app:use-lumberjack-bundle
         yarn nx e2e lumberjack-app-e2e
@@ -51,8 +57,8 @@ jobs:
   # We're using Nx Cloud for Distributed Task Execution
   # Reference: https://nx.dev/using-nx/dte
   #
-  # Agents receive tasks to execute in bulk whenever they are ready or finished
-  # with previous tasks
+  # Agents receive tasks to execute in bulk whenever they are ready or have
+  # finished their previous tasks
   dte_agents:
     name: DTE Agents
     uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.4
