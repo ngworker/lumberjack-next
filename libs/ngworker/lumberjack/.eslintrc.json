@@ -25,23 +25,6 @@
       }
     },
     {
-      "files": ["*.ts"],
-      "excludedFiles": ["*.spec.ts"],
-      "rules": {
-        "no-restricted-imports": [
-          "error",
-          {
-            "patterns": [
-              {
-                "group": ["@internal/*"],
-                "message": "@internal packages are only allowed in test suites."
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
       "files": ["*.html"],
       "extends": ["plugin:@nrwl/nx/angular-template"],
       "rules": {}
