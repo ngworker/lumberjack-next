@@ -41,16 +41,11 @@ jobs:
       parallel-commands-on-agents: |
         yarn nx affected --target=lint --parallel=2
         yarn nx affected --target=test --parallel=1 --ci --maxWorkers=2
-        yarn nx affected --target=build --exclude=lumberjack-app --parallel=2
+        yarn nx affected --target=build --parallel=2
         yarn nx affected --target=e2e --exclude=lumberjack-app-e2e --parallel=1
       # Commands run sequentially on this DTE coordinator after parallel jobs
       final-commands: |
-        yarn delete-path-alias @ngworker/lumberjack
-        yarn delete-path-alias @ngworker/lumberjack/console-driver
-        yarn delete-path-alias @ngworker/lumberjack/http-driver
-        mkdir -p apps/lumberjack-app/node_modules/@ngworker/lumberjack
-        cp -r dist/libs/ngworker/lumberjack apps/lumberjack-app/node_modules/@ngworker/lumberjack
-        yarn nx build lumberjack-app
+        yarn nx run lumberjack-app:use-lumberjack-bundle
         yarn nx e2e lumberjack-app-e2e
 
   # We're using Nx Cloud for Distributed Task Execution

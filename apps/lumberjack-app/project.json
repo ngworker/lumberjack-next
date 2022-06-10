@@ -81,6 +81,19 @@
         "jestConfig": "apps/lumberjack-app/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "use-lumberjack-bundle": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "yarn delete-path-alias @ngworker/lumberjack",
+          "yarn delete-path-alias @ngworker/lumberjack/console-driver",
+          "yarn delete-path-alias @ngworker/lumberjack/http-driver",
+          "mkdir -p apps/lumberjack-app/node_modules/@ngworker/lumberjack",
+          "cp -r dist/libs/ngworker/lumberjack apps/lumberjack-app/node_modules/@ngworker/lumberjack"
+        ],
+        "parallel": false
+      }
     }
   },
   "tags": ["scope:internal", "type:app"]
