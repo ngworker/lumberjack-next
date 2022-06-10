@@ -33,16 +33,17 @@ jobs:
     name: DTE Coordinator
     uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.4
     with:
-      # Commands run in parallel on this Nx Cloud coordinator
+      # Commands run in parallel on this DTE coordinator
       parallel-commands: |
         yarn nx-cloud record -- yarn nx workspace-lint
         yarn nx-cloud record -- yarn nx format:check
-      # Commands distributed between Nx Cloud agents
+      # Commands distributed between DTE agents
       parallel-commands-on-agents: |
         yarn nx affected --target=lint --parallel=2
         yarn nx affected --target=test --parallel=1 --ci --maxWorkers=2
         yarn nx affected --target=build --parallel=2 --exclude=lumberjack-app
         yarn nx affected --target=e2e --parallel=1 --exclude=lumberjack-app-e2e
+      # Commands run sequentially on this DTE coordinator after parallel jobs
       final-commands: |
         yarn delete-path-alias @ngworker/lumberjack
         yarn delete-path-alias @ngworker/lumberjack/console-driver
