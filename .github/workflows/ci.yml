@@ -45,7 +45,7 @@ jobs:
         yarn nx affected --target=e2e --exclude=lumberjack-app-e2e --parallel=1
       # Commands run sequentially on this DTE coordinator after parallel jobs
       final-commands: |
-        yarn nx run lumberjack-app:use-lumberjack-bundle
+        NX_CLOUD_DISTRIBUTED_EXECUTION=false yarn nx run lumberjack-app:use-lumberjack-bundle
         yarn nx e2e lumberjack-app-e2e
 
   # We're using Nx Cloud for Distributed Task Execution
