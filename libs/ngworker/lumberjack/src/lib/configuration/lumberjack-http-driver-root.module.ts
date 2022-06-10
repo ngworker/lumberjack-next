@@ -45,7 +45,7 @@ export class LumberjackHttpDriverRootModule {
     @Optional()
     @SkipSelf()
     @Inject(LumberjackHttpDriverRootModule)
-    maybeNgModuleFromParentInjector: LumberjackHttpDriverRootModule = undefined as any // eslint-disable-line  @typescript-eslint/no-explicit-any
+    maybeNgModuleFromParentInjector: LumberjackHttpDriverRootModule | null | undefined = null
   ) {
     if (maybeNgModuleFromParentInjector) {
       throw new Error(

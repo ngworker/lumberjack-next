@@ -10,8 +10,7 @@ import { LumberjackTimeService } from '../time/lumberjack-time.service';
 import { lumberjackFormatLog } from './lumberjack-format-log';
 
 function parseFormattedLog(formattedLog: string) {
-  // eslint-disable-next-line no-useless-escape
-  const formattedLogPattern = /^([a-z]+) ([0-9\.:\-TZ]+) (\[(.+)\] )?(.*)$/;
+  const formattedLogPattern = /^([a-z]+) ([0-9.:\-TZ]+) (\[(.+)\] )?(.*)$/;
 
   const [, level, timestamp, taggedScopeWithEndingSpace = '', scope = '', message] =
     formattedLogPattern.exec(formattedLog) || [];

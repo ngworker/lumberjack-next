@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { Inject, Injectable } from '@angular/core';
 
 import { LumberjackLogDriver, LumberjackLogDriverConfig, LumberjackLogPayload } from '@ngworker/lumberjack';

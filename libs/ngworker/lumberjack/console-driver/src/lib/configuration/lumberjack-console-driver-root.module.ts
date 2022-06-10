@@ -42,8 +42,7 @@ export class LumberjackConsoleDriverRootModule {
     @Optional()
     @SkipSelf()
     @Inject(LumberjackConsoleDriverRootModule)
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    maybeNgModuleFromParentInjector: LumberjackConsoleDriverRootModule = null as any
+    maybeNgModuleFromParentInjector: LumberjackConsoleDriverRootModule | null | undefined = null
   ) {
     if (maybeNgModuleFromParentInjector) {
       throw new Error(
