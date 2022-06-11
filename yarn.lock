@@ -5185,7 +5185,7 @@ eslint-plugin-cypress@2.10.3:
   dependencies:
     globals "^11.12.0"
 
-eslint-plugin-sonarjs@^0.13.0:
+eslint-plugin-sonarjs@0.13.0:
   version "0.13.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-sonarjs/-/eslint-plugin-sonarjs-0.13.0.tgz#c34d140cc90abaaed38f5a5201a2ccdebe398862"
   integrity sha512-t3m7ta0EspzDxSOZh3cEOJIJVZgN/TlJYaBGnQlK6W/PZNbWep8q4RQskkJkA7/zwNpX0BaoEOSUUrqaADVoqA==
