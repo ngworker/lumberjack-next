@@ -44,7 +44,7 @@ jobs:
       # build: 2 tasks assigned at a time, 1 task per vCPU
       # e2e: 1 task assigned at a time, 1 task total
       parallel-commands-on-agents: |
-        yarn nx affected --target=lint --parallel=2
+        yarn nx affected --target=lint --parallel=2 --max-warnings=0
         yarn nx affected --target=test --parallel=1 --ci --maxWorkers=2
         yarn nx affected --target=build --parallel=2
         yarn nx affected --target=e2e --exclude=lumberjack-app-e2e --parallel=1

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// ⬆️ Maintain signature compatibility with LumberjackLogDriver
 import { Inject, Injectable } from '@angular/core';
 
 import {
@@ -20,27 +22,27 @@ export class NoopDriver<TPayload extends LumberjackLogPayload | void = void> imp
 
   constructor(@Inject(noopDriverConfigToken) readonly config: LumberjackLogDriverConfig) {}
 
-  logCritical(driverLog: LumberjackLogDriverLog<TPayload>): void {
+  logCritical(_driverLog: LumberjackLogDriverLog<TPayload>): void {
     // intentionally a no-op
   }
 
-  logDebug(driverLog: LumberjackLogDriverLog<TPayload>): void {
+  logDebug(_driverLog: LumberjackLogDriverLog<TPayload>): void {
     // intentionally a no-op
   }
 
-  logError(driverLog: LumberjackLogDriverLog<TPayload>): void {
+  logError(_driverLog: LumberjackLogDriverLog<TPayload>): void {
     // intentionally a no-op
   }
 
-  logInfo(driverLog: LumberjackLogDriverLog<TPayload>): void {
+  logInfo(_driverLog: LumberjackLogDriverLog<TPayload>): void {
     // intentionally a no-op
   }
 
-  logTrace(driverLog: LumberjackLogDriverLog<TPayload>): void {
+  logTrace(_driverLog: LumberjackLogDriverLog<TPayload>): void {
     // intentionally a no-op
   }
 
-  logWarning(driverLog: LumberjackLogDriverLog<TPayload>): void {
+  logWarning(_driverLog: LumberjackLogDriverLog<TPayload>): void {
     // intentionally a no-op
   }
 }
