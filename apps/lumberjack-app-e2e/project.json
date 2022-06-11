@@ -1,5 +1,5 @@
 {
-  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/lumberjack-app-e2e/src",
   "projectType": "application",
   "targets": {
@@ -23,6 +23,6 @@
       }
     }
   },
-  "tags": [],
+  "tags": ["scope:internal", "type:e2e"],
   "implicitDependencies": ["lumberjack-app"]
 }

@@ -13,10 +13,7 @@
         "polyfills": "apps/lumberjack-app/src/polyfills.ts",
         "tsConfig": "apps/lumberjack-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/lumberjack-app/src/favicon.ico",
-          "apps/lumberjack-app/src/assets"
-        ],
+        "assets": ["apps/lumberjack-app/src/favicon.ico", "apps/lumberjack-app/src/assets"],
         "styles": ["apps/lumberjack-app/src/styles.scss"],
         "scripts": []
       },
@@ -74,10 +71,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "apps/lumberjack-app/**/*.ts",
-          "apps/lumberjack-app/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/lumberjack-app/**/*.ts", "apps/lumberjack-app/**/*.html"]
       }
     },
     "test": {
@@ -87,7 +81,20 @@
         "jestConfig": "apps/lumberjack-app/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "use-lumberjack-bundle": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "yarn delete-path-alias @ngworker/lumberjack",
+          "yarn delete-path-alias @ngworker/lumberjack/console-driver",
+          "yarn delete-path-alias @ngworker/lumberjack/http-driver",
+          "mkdir -p apps/lumberjack-app/node_modules/@ngworker/lumberjack",
+          "cp -r dist/libs/ngworker/lumberjack apps/lumberjack-app/node_modules/@ngworker/lumberjack"
+        ],
+        "parallel": false
+      }
     }
   },
-  "tags": []
+  "tags": ["scope:internal", "type:app"]
 }

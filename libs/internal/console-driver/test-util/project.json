@@ -3,22 +3,6 @@
   "sourceRoot": "libs/internal/console-driver/test-util/src",
   "prefix": "ngworker",
   "targets": {
-    "build": {
-      "executor": "@nrwl/angular:ng-packagr-lite",
-      "outputs": ["dist/libs/internal/console-driver/test-util"],
-      "options": {
-        "project": "libs/internal/console-driver/test-util/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/internal/console-driver/test-util/tsconfig.lib.prod.json"
-        },
-        "development": {
-          "tsConfig": "libs/internal/console-driver/test-util/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production"
-    },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/internal/console-driver/test-util"],
@@ -37,5 +21,5 @@
       }
     }
   },
-  "tags": ["type:test-util"]
+  "tags": ["scope:internal", "type:test-util"]
 }

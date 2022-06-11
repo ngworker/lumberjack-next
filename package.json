@@ -3,13 +3,23 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
-    "start": "nx serve",
     "build": "nx build",
+    "delete-path-alias": "node tools/scripts/delete-path-alias.mjs",
+    "ng": "nx",
+    "start": "nx serve",
     "test": "nx test"
   },
   "private": true,
+  "engines": {
+    "node": "16.15.1",
+    "npm": "Use the Yarn Classic (1.x) CLI instead of npm",
+    "yarn": "1.22.18"
+  },
+  "volta": {
+    "node": "16.15.1",
+    "yarn": "1.22.18"
+  },
   "dependencies": {
     "@angular/animations": "14.0.0",
     "@angular/common": "14.0.0",
@@ -37,6 +47,7 @@
     "@nrwl/eslint-plugin-nx": "14.2.0-rc.2",
     "@nrwl/jest": "14.2.0-rc.2",
     "@nrwl/linter": "14.2.0-rc.2",
+    "@nrwl/nx-cloud": "14.0.8",
     "@nrwl/workspace": "14.2.0-rc.2",
     "@types/jest": "27.4.1",
     "@types/node": "16.11.7",

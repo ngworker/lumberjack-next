@@ -5,6 +5,7 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "excludedFiles": ["*.spec.ts"],
       "rules": {
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
@@ -13,8 +14,24 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "sourceTag": "scope:public",
+                "onlyDependOnLibsWithTags": ["scope:public"]
+              },
+              {
+                "sourceTag": "scope:internal",
+                "onlyDependOnLibsWithTags": ["scope:public", "scope:internal"]
+              },
+              {
+                "sourceTag": "type:app",
+                "onlyDependOnLibsWithTags": ["type:lib"]
+              },
+              {
+                "sourceTag": "type:lib",
+                "onlyDependOnLibsWithTags": ["type:lib", "type:test-util"]
+              },
+              {
+                "sourceTag": "type:e2e",
+                "onlyDependOnLibsWithTags": ["type:app"]
               }
             ]
           }
