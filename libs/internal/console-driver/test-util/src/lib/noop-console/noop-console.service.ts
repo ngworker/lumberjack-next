@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
 
 import { LumberjackConsole } from '@ngworker/lumberjack/console-driver';
@@ -11,33 +9,33 @@ import { LumberjackConsole } from '@ngworker/lumberjack/console-driver';
  */
 @Injectable()
 export class NoopConsole implements LumberjackConsole {
-  debug(...data: any[]): void;
-  debug(message?: any, ...optionalParams: any[]): void;
-  debug(message?: any, ...optionalParams: any[]) {
+  debug(...data: unknown[]): void;
+  debug(message?: unknown, ...optionalParams: unknown[]): void;
+  debug(message?: unknown, ...optionalParams: unknown[]) {
     // intentionally a no-op
   }
 
-  error(...data: any[]): void;
-  error(message?: any, ...optionalParams: any[]): void;
-  error(message?: any, ...optionalParams: any[]) {
+  error(...data: unknown[]): void;
+  error(message?: unknown, ...optionalParams: unknown[]): void;
+  error(message?: unknown, ...optionalParams: unknown[]) {
     // intentionally a no-op
   }
 
-  info(...data: any[]): void;
-  info(message?: any, ...optionalParams: any[]): void;
-  info(message?: any, ...optionalParams: any[]) {
+  info(...data: unknown[]): void;
+  info(message?: unknown, ...optionalParams: unknown[]): void;
+  info(message?: unknown, ...optionalParams: unknown[]) {
     // intentionally a no-op
   }
 
-  trace(...data: any[]): void;
-  trace(message?: any, ...optionalParams: any[]): void;
-  trace(message?: any, ...optionalParams: any[]) {
+  trace(...data: unknown[]): void;
+  trace(message?: unknown, ...optionalParams: unknown[]): void;
+  trace(message?: unknown, ...optionalParams: unknown[]) {
     // intentionally a no-op
   }
 
-  warn(...data: any[]): void;
-  warn(message?: any, ...optionalParams: any[]): void;
-  warn(message?: any, ...optionalParams: any[]) {
+  warn(...data: unknown[]): void;
+  warn(message?: unknown, ...optionalParams: unknown[]): void;
+  warn(message?: unknown, ...optionalParams: unknown[]) {
     // intentionally a no-op
   }
 }

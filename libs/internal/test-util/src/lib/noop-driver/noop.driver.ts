@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Inject, Injectable } from '@angular/core';
 
 import {

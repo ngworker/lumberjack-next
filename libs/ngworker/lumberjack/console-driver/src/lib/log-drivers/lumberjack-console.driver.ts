@@ -69,7 +69,6 @@ export class LumberjackConsoleDriver<TPayload extends LumberjackLogPayload | voi
    * @param param0 The log and its text representation.
    */
   logTrace({ formattedLog, log: { payload } }: LumberjackLogDriverLog<TPayload>): void {
-    // eslint-disable-next-line no-console
     this.console.trace(formattedLog, payload);
   }
 

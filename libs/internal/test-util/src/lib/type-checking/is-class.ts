@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export function isClass(value: unknown): boolean {
   return (
     value &&
