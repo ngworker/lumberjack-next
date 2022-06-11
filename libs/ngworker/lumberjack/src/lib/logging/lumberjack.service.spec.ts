@@ -537,32 +537,36 @@ describe(LumberjackService.name, () => {
     let spyDriver: SpyDriver;
 
     describe('when a log driver is registered', () => {
+      const scope = 'Verbose';
+
       it('debug logs are logged', () => {
-        lumberjack.log(logFactory.createDebugLog('').withScope('Verbose').build());
+        lumberjack.log(logFactory.createDebugLog('').withScope(scope).build());
 
         expect(spyDriver.logDebug).toHaveBeenCalledTimes(1);
-        expect(spyDriver.logDebug).toHaveBeenCalledWith(createDebugDriverLog(LumberjackLevel.Debug));
+        expect(spyDriver.logDebug).toHaveBeenCalledWith(createDebugDriverLog(LumberjackLevel.Debug, undefined, scope));
       });
 
       it('errors are logged', () => {
-        lumberjack.log(logFactory.createErrorLog('').withScope('Verbose').build());
+        lumberjack.log(logFactory.createErrorLog('').withScope(scope).build());
 
         expect(spyDriver.logError).toHaveBeenCalledTimes(1);
-        expect(spyDriver.logError).toHaveBeenCalledWith(createErrorDriverLog(LumberjackLevel.Error));
+        expect(spyDriver.logError).toHaveBeenCalledWith(createErrorDriverLog(LumberjackLevel.Error, undefined, scope));
       });
 
       it('info is logged', () => {
-        lumberjack.log(logFactory.createInfoLog('').withScope('Verbose').build());
+        lumberjack.log(logFactory.createInfoLog('').withScope(scope).build());
 
         expect(spyDriver.logInfo).toHaveBeenCalledTimes(1);
-        expect(spyDriver.logInfo).toHaveBeenCalledWith(createInfoDriverLog(LumberjackLevel.Info));
+        expect(spyDriver.logInfo).toHaveBeenCalledWith(createInfoDriverLog(LumberjackLevel.Info, undefined, scope));
       });
 
       it('warnings are logged', () => {
-        lumberjack.log(logFactory.createWarningLog('').withScope('Verbose').build());
+        lumberjack.log(logFactory.createWarningLog('').withScope(scope).build());
 
         expect(spyDriver.logWarning).toHaveBeenCalledTimes(1);
-        expect(spyDriver.logWarning).toHaveBeenCalledWith(createWarningDriverLog(LumberjackLevel.Warning));
+        expect(spyDriver.logWarning).toHaveBeenCalledWith(
+          createWarningDriverLog(LumberjackLevel.Warning, undefined, scope)
+        );
       });
     });
   });
