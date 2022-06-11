@@ -6,6 +6,7 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "build": "nx build",
     "delete-path-alias": "node tools/scripts/delete-path-alias.mjs",
+    "lint": "nx run-many --target=lint --all --max-warnings=0",
     "ng": "nx",
     "start": "nx serve",
     "test": "nx test"
