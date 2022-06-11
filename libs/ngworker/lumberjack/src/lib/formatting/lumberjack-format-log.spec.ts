@@ -44,8 +44,8 @@ describe(lumberjackFormatLog.name, () => {
 
     logLevels.forEach((expectedLevel) => {
       it(`prefixes the message with log level "${expectedLevel}"`, () => {
-        const log = new LumberjackLogBuilder(resolveDependency(LumberjackTimeService), expectedLevel, 'Test message')
-          .withScope('Test Scope')
+        const log = new LumberjackLogBuilder(resolveDependency(LumberjackTimeService), expectedLevel, 'Log level test')
+          .withScope('Log level')
           .build();
 
         const formattedLog = lumberjackFormatLog(log);
@@ -68,8 +68,8 @@ describe(lumberjackFormatLog.name, () => {
         const log: LumberjackLog = {
           createdAt: unixEpochTicks,
           level: LumberjackLevel.Debug,
-          message: 'Test message',
-          scope: 'Test Scope',
+          message: 'Timestamp test',
+          scope: 'Timestamp',
         };
 
         const formattedLog = lumberjackFormatLog(log);
@@ -96,7 +96,7 @@ describe(lumberjackFormatLog.name, () => {
     });
 
     it('does not add a tag without a scope', () => {
-      const log = logFactory.createDebugLog('Test message').build();
+      const log = logFactory.createDebugLog('Scope test').build();
 
       const formattedLog = lumberjackFormatLog(log);
 
@@ -111,7 +111,7 @@ describe(lumberjackFormatLog.name, () => {
 
     messages.forEach((expectedMessage) => {
       it(`places the message at the end with a scope`, () => {
-        const log = logFactory.createDebugLog(expectedMessage).withScope('Test Scope').build();
+        const log = logFactory.createDebugLog(expectedMessage).withScope('Message').build();
 
         const formattedLog = lumberjackFormatLog(log);
 

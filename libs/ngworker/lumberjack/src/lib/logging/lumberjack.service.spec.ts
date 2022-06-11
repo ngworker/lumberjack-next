@@ -36,6 +36,21 @@ import { LumberjackTimeService } from '../time/lumberjack-time.service';
 import { LumberjackLogFactory } from './lumberjack-log-factory';
 import { LumberjackService } from './lumberjack.service';
 
+class SpyDriverError extends Error {
+  constructor(message: string = 'SpyDriverError') {
+    super(message);
+
+    // SpyDriverError instanceof Error === true
+    Object.setPrototypeOf(this, new.target.prototype);
+
+    // Error name
+    this.name = 'SpyDriverError';
+
+    // Non-standard V8 function for maintaining a stack trace
+    Error.captureStackTrace?.(this, this.constructor);
+  }
+}
+
 const noLogsConfig: Omit<LumberjackLogDriverConfig, 'identifier'> = {
   levels: [],
 };
@@ -186,7 +201,7 @@ describe(LumberjackService.name, () => {
           ErrorThrowingDriver
         ];
         spyDriver.logDebug.mockImplementation(() => {
-          throw new Error('The hidden spy made an error');
+          throw new SpyDriverError();
         });
         const errorDebugSpy = jest.spyOn(errorDriver, 'logDebug');
         const errorErrorSpy = jest.spyOn(errorDriver, 'logError');
@@ -224,7 +239,7 @@ describe(LumberjackService.name, () => {
           NoopDriver
         ];
         spyDriver.logDebug.mockImplementation(() => {
-          throw new Error('The hidden spy made an error');
+          throw new SpyDriverError();
         });
         const errorDebugSpy = jest.spyOn(errorDriver, 'logDebug');
         const errorErrorSpy = jest.spyOn(errorDriver, 'logError');
@@ -315,7 +330,7 @@ describe(LumberjackService.name, () => {
         const spyDriver = logDrivers[0] as SpyDriver;
         const errorDriver = logDrivers[1] as ErrorThrowingDriver;
         spyDriver.logDebug.mockImplementation(() => {
-          throw new Error('The hidden spy made an error');
+          throw new SpyDriverError();
         });
         jest.spyOn(errorDriver, 'logDebug');
         jest.spyOn(errorDriver, 'logError');
@@ -523,28 +538,28 @@ describe(LumberjackService.name, () => {
 
     describe('when a log driver is registered', () => {
       it('debug logs are logged', () => {
-        lumberjack.log(logFactory.createDebugLog('').withScope('Test').build());
+        lumberjack.log(logFactory.createDebugLog('').withScope('Verbose').build());
 
         expect(spyDriver.logDebug).toHaveBeenCalledTimes(1);
         expect(spyDriver.logDebug).toHaveBeenCalledWith(createDebugDriverLog(LumberjackLevel.Debug));
       });
 
       it('errors are logged', () => {
-        lumberjack.log(logFactory.createErrorLog('').withScope('Test').build());
+        lumberjack.log(logFactory.createErrorLog('').withScope('Verbose').build());
 
         expect(spyDriver.logError).toHaveBeenCalledTimes(1);
         expect(spyDriver.logError).toHaveBeenCalledWith(createErrorDriverLog(LumberjackLevel.Error));
       });
 
       it('info is logged', () => {
-        lumberjack.log(logFactory.createInfoLog('').withScope('Test').build());
+        lumberjack.log(logFactory.createInfoLog('').withScope('Verbose').build());
 
         expect(spyDriver.logInfo).toHaveBeenCalledTimes(1);
         expect(spyDriver.logInfo).toHaveBeenCalledWith(createInfoDriverLog(LumberjackLevel.Info));
       });
 
       it('warnings are logged', () => {
-        lumberjack.log(logFactory.createWarningLog('').withScope('Test').build());
+        lumberjack.log(logFactory.createWarningLog('').withScope('Verbose').build());
 
         expect(spyDriver.logWarning).toHaveBeenCalledTimes(1);
         expect(spyDriver.logWarning).toHaveBeenCalledWith(createWarningDriverLog(LumberjackLevel.Warning));
