@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// ⬆️ Maintain signature compatibility with LumberjackLogDriver
 import { Inject, Injectable } from '@angular/core';
 
 import {
@@ -8,9 +10,6 @@ import {
 } from '@ngworker/lumberjack';
 
 import { noopDriverConfigToken } from './noop-driver-config.token';
-
-// Maintain signature compatibility with LumberjackLogDriver
-// eslint-disable @typescript-eslint/no-unused-vars
 
 /**
  * No-op log driver.
@@ -47,5 +46,3 @@ export class NoopDriver<TPayload extends LumberjackLogPayload | void = void> imp
     // intentionally a no-op
   }
 }
-
-// eslint-enable @typescript-eslint/no-unused-vars
