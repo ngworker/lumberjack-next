@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 
 import { LumberjackConsole } from '@ngworker/lumberjack/console-driver';
 
+// Maintain signature compatibility with LumberjackConsole
+// eslint-disable @typescript-eslint/no-unused-vars
+// eslint-disable @typescript-eslint/no-explicit-any
+
 /**
  * No-op console logger.
  *
@@ -9,33 +13,36 @@ import { LumberjackConsole } from '@ngworker/lumberjack/console-driver';
  */
 @Injectable()
 export class NoopConsole implements LumberjackConsole {
-  debug(...data: unknown[]): void;
-  debug(message?: unknown, ...optionalParams: unknown[]): void;
-  debug(message?: unknown, ...optionalParams: unknown[]) {
+  debug(...data: any[]): void;
+  debug(message?: any, ...optionalParams: any[]): void;
+  debug(_message?: any, ..._optionalParams: any[]) {
     // intentionally a no-op
   }
 
-  error(...data: unknown[]): void;
-  error(message?: unknown, ...optionalParams: unknown[]): void;
-  error(message?: unknown, ...optionalParams: unknown[]) {
+  error(...data: any[]): void;
+  error(message?: any, ...optionalParams: any[]): void;
+  error(_message?: any, ..._optionalParams: any[]) {
     // intentionally a no-op
   }
 
-  info(...data: unknown[]): void;
-  info(message?: unknown, ...optionalParams: unknown[]): void;
-  info(message?: unknown, ...optionalParams: unknown[]) {
+  info(...data: any[]): void;
+  info(message?: any, ...optionalParams: any[]): void;
+  info(_message?: any, ..._optionalParams: any[]) {
     // intentionally a no-op
   }
 
-  trace(...data: unknown[]): void;
-  trace(message?: unknown, ...optionalParams: unknown[]): void;
-  trace(message?: unknown, ...optionalParams: unknown[]) {
+  trace(...data: any[]): void;
+  trace(message?: any, ...optionalParams: any[]): void;
+  trace(_message?: any, ..._optionalParams: any[]) {
     // intentionally a no-op
   }
 
-  warn(...data: unknown[]): void;
-  warn(message?: unknown, ...optionalParams: unknown[]): void;
-  warn(message?: unknown, ...optionalParams: unknown[]) {
+  warn(...data: any[]): void;
+  warn(message?: any, ...optionalParams: any[]): void;
+  warn(_message?: any, ..._optionalParams: any[]) {
     // intentionally a no-op
   }
 }
+
+// eslint-enable @typescript-eslint/no-unused-vars
+// eslint-enable @typescript-eslint/no-explicit-any
