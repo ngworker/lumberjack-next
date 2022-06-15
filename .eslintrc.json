@@ -7,7 +7,7 @@
     "ecmaVersion": 2018,
     "ecmaFeatures": { "modules": true },
     "sourceType": "module",
-    "project": ["./apps/**/tsconfig.app.json", "./libs/**/tsconfig.lib.json"]
+    "project": ["{apps,libs}/**/tsconfig.*?.json", "apps/**/*-e2e/tsconfig.json"]
   },
   "overrides": [
     {
