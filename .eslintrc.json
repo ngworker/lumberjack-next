@@ -65,7 +65,8 @@
       "extends": ["plugin:sonarjs/recommended", "plugin:rxjs/recommended"],
       "rules": {
         "sonarjs/cognitive-complexity": ["error", 8],
-        "sonarjs/no-identical-expressions": "error"
+        "sonarjs/no-identical-expressions": "error",
+        "rxjs/no-explicit-generics": "warn"
       }
     }
   ]
