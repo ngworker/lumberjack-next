@@ -68,9 +68,7 @@
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "extends": ["plugin:sonarjs/recommended", "plugin:rxjs/recommended"],
       "rules": {
-        "sonarjs/cognitive-complexity": ["error", 8],
-        "sonarjs/no-identical-expressions": "error",
-        "rxjs/no-explicit-generics": "warn"
+        "sonarjs/cognitive-complexity": ["error", 8]
       }
     }
   ]
