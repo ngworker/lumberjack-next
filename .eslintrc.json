@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx", "sonarjs", "rxjs"],
+  "plugins": ["@nrwl/nx", "sonarjs", "rxjs", "rxjs-angular"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -39,6 +39,12 @@
       }
     },
     {
+      "files": ["*.ts"],
+      "rules": {
+        "rxjs-angular/prefer-composition": "warn"
+      }
+    },
+    {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
       "rules": {}
@@ -56,7 +62,7 @@
     },
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "extends": ["plugin:sonarjs/recommended"],
+      "extends": ["plugin:sonarjs/recommended", "plugin:rxjs/recommended"],
       "rules": {
         "sonarjs/cognitive-complexity": ["error", 8],
         "sonarjs/no-identical-expressions": "error"
