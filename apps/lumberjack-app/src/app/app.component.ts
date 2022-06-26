@@ -10,7 +10,7 @@ import { ForestService } from './forest.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  #subscriptions = new Subscription();
+  private subscriptions = new Subscription();
 
   title = 'lumberjack-app';
 
@@ -19,10 +19,10 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.logger.helloForest();
 
-    this.#subscriptions.add(this.forest.fire$.subscribe(() => this.logger.forestOnFire()));
+    this.subscriptions.add(this.forest.fire$.subscribe(() => this.logger.forestOnFire()));
   }
 
   ngOnDestroy(): void {
-    this.#subscriptions.unsubscribe();
+    this.subscriptions.unsubscribe();
   }
 }
