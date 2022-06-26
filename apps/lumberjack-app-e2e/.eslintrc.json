@@ -1,11 +1,4 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 2019,
-    "ecmaFeatures": { "modules": true },
-    "sourceType": "module",
-    "project": ["apps/lumberjack-app-e2e/tsconfig.json"]
-  },
   "extends": ["plugin:cypress/recommended", "../../.eslintrc.json"],
   "ignorePatterns": ["!**/*"],
   "overrides": [

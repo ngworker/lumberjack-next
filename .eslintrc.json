@@ -2,6 +2,13 @@
   "root": true,
   "ignorePatterns": ["**/*"],
   "plugins": ["@nrwl/nx", "sonarjs", "rxjs", "rxjs-angular"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "ecmaFeatures": { "modules": true },
+    "sourceType": "module",
+    "project": ["{apps,libs}/**/tsconfig.*?.json", "apps/**/*-e2e/tsconfig.json"]
+  },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],

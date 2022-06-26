@@ -1,12 +1,5 @@
 {
   "extends": ["../../../../.eslintrc.json"],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 2019,
-    "ecmaFeatures": { "modules": true },
-    "sourceType": "module",
-    "project": ["libs/internal/console-driver/test-util/tsconfig.*?.json"]
-  },
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {

@@ -73,3 +73,11 @@ fix(release): need to depend on latest rxjs and zone.js
 
 The version in our package.json gets copied to the one we publish, and users need the latest of these.
 ```
+
+## ESLint Parser
+
+Because our project counts with an small number of libraries, we choose to configure the ESLint Typescript parser in the global ESLint.
+
+However,if a performance issue is detected while running the ESLint commands or while seeing the ESLint recommendations in our IDEs, we should move the ESLint Parser configuration to be per project instead of global.
+
+Per project ESLint configurations is the Nrwl/Nx recommendation.
