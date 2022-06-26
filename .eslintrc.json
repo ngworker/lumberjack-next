@@ -41,7 +41,7 @@
     {
       "files": ["*.ts"],
       "rules": {
-        "rxjs-angular/prefer-composition": "warn"
+        "rxjs-angular/prefer-composition": "off"
       }
     },
     {
