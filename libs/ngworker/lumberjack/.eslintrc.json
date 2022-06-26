@@ -1,5 +1,12 @@
 {
   "extends": ["../../../.eslintrc.json"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "ecmaFeatures": { "modules": true },
+    "sourceType": "module",
+    "project": ["libs/ngworker/lumberjack/tsconfig.*?.json"]
+  },
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
