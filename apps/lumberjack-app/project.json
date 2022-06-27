@@ -84,6 +84,7 @@
     },
     "use-lumberjack-bundle": {
       "executor": "nx:run-commands",
+      "dependsOn": [{ "projects": "dependencies", "target": "build" }],
       "options": {
         "commands": [
           "yarn delete-path-alias @ngworker/lumberjack",
