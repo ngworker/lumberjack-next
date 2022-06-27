@@ -24,14 +24,6 @@
       }
     }
   },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ]
-  },
   "generators": {
     "@nrwl/angular:application": {
       "style": "scss",
@@ -47,5 +39,10 @@
       "style": "scss"
     }
   },
-  "defaultProject": "lumberjack-app"
+  "defaultProject": "lumberjack-app",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": [{ "projects": "dependencies", "target": "build" }]
+    }
+  }
 }
