@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx", "rxjs", "rxjs-angular", "sonarjs"],
+  "plugins": ["@nrwl/nx", "etc", "rxjs", "rxjs-angular", "sonarjs"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": ["{apps,libs}/**/tsconfig.*?.json", "apps/**/*-e2e/tsconfig.json"]
@@ -60,8 +60,10 @@
     },
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "extends": ["plugin:rxjs/recommended", "plugin:sonarjs/recommended"],
+      "extends": ["plugin:etc/recommended", "plugin:rxjs/recommended", "plugin:sonarjs/recommended"],
       "rules": {
+        "etc/no-commented-out-code": "error",
+        "etc/no-const-enum": "error",
         "sonarjs/cognitive-complexity": ["error", 8]
       }
     },

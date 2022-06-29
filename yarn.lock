@@ -2268,6 +2268,13 @@
   dependencies:
     esquery "^1.0.1"
 
+"@phenomnomnominal/tsquery@^4.0.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@phenomnomnominal/tsquery/-/tsquery-4.2.0.tgz#7742ff4af12ce673b0b601ba5515c934f1876b14"
+  integrity sha512-hR2U3uVcrrdkuG30ItQ+uFDs4ncZAybxWG0OjTE8ptPzVoU7GVeXpy+vMU8zX9EbmjGeITPw/su5HjYQyAH8bA==
+  dependencies:
+    esquery "^1.0.1"
+
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.1":
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.5.7.tgz#58f8217ba70069cc6a73f5d7e05e85b458c150e2"
@@ -5273,6 +5280,18 @@ eslint-plugin-cypress@2.10.3:
   dependencies:
     globals "^11.12.0"
 
+eslint-plugin-etc@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-etc/-/eslint-plugin-etc-2.0.2.tgz#98013013058209f5a1d364caf17caeb62bd817ce"
+  integrity sha512-g3b95LCdTCwZA8On9EICYL8m1NMWaiGfmNUd/ftZTeGZDXrwujKXUr+unYzqKjKFo1EbqJ31vt+Dqzrdm/sUcw==
+  dependencies:
+    "@phenomnomnominal/tsquery" "^4.0.0"
+    "@typescript-eslint/experimental-utils" "^5.0.0"
+    eslint-etc "^5.1.0"
+    requireindex "~1.2.0"
+    tslib "^2.0.0"
+    tsutils "^3.0.0"
+
 eslint-plugin-rxjs-angular@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-rxjs-angular/-/eslint-plugin-rxjs-angular-2.0.0.tgz#32bc31500ba4ad797d9f14137943b6d81a1476ef"
@@ -7889,7 +7908,7 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ng-packagr@~14.0.0:
+ng-packagr@14.0.0:
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/ng-packagr/-/ng-packagr-14.0.0.tgz#ce54d2c065f188d8c6230c03d3e20c37de5adc5d"
   integrity sha512-jHkpWm2yEpMPbY0Qz3sfDh+7uAfyskEMesEPA1aGQXxvwiIaCl+8RFRdPQxObYOj8Uv7ZJxoyUkqi8KqI5RV9g==
