@@ -36,11 +36,6 @@ import { LumberjackService } from './lumberjack.service';
 class SpyDriverError extends Error {
   constructor(message: string = 'SpyDriverError') {
     super(message);
-
-    // SpyDriverError instanceof Error === true
-    Object.setPrototypeOf(this, new.target.prototype);
-
-    // Error name
     this.name = 'SpyDriverError';
 
     // Non-standard V8 function for maintaining a stack trace
