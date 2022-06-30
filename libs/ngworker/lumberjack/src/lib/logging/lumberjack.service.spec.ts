@@ -1,6 +1,5 @@
 import { StaticProvider } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-
 import { NoopConsoleModule } from '@internal/console-driver/test-util';
 import {
   createCriticalDriverLog,
@@ -22,7 +21,6 @@ import {
   SpyDriverModule,
 } from '@internal/test-util';
 import { LumberjackConsoleDriverModule } from '@ngworker/lumberjack/console-driver';
-
 import { lumberjackLogDriverConfigToken } from '../configuration/lumberjack-log-driver-config.token';
 import { LumberjackLogDriverConfig } from '../configuration/lumberjack-log-driver.config';
 import { LumberjackModule } from '../configuration/lumberjack.module';
@@ -32,7 +30,6 @@ import { lumberjackLogDriverToken } from '../log-drivers/lumberjack-log-driver.t
 import { LumberjackLevel } from '../logs/lumberjack-level';
 import { LumberjackLogPayload } from '../logs/lumberjack-log-payload';
 import { LumberjackTimeService } from '../time/lumberjack-time.service';
-
 import { LumberjackLogFactory } from './lumberjack-log-factory';
 import { LumberjackService } from './lumberjack.service';
 
@@ -47,7 +44,11 @@ class SpyDriverError extends Error {
     this.name = 'SpyDriverError';
 
     // Non-standard V8 function for maintaining a stack trace
-    Error.captureStackTrace?.(this, this.constructor);
+    const ErrorWithCaptureStackTrace = Error as unknown as Error & {
+      // eslint-disable-next-line @typescript-eslint/ban-types
+      captureStackTrace?: (error: Error, constructor: Function) => void;
+    };
+    ErrorWithCaptureStackTrace.captureStackTrace?.(this, this.constructor);
   }
 }
 
