@@ -18,7 +18,6 @@ describe(LumberjackHttpDriverError.name, () => {
     const error = new LumberjackHttpDriverError();
 
     expect(error).toBeInstanceOf(Error);
-    expect(error).toBeInstanceOf(LumberjackHttpDriverError);
   });
 
   it('has the error name ""LumberjackHttpDriverError"', () => {
