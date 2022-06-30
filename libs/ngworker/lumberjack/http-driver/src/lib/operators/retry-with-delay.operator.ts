@@ -1,5 +1,4 @@
-import { concat, MonoTypeOperatorFunction, throwError } from 'rxjs';
-import { delay, retryWhen, take } from 'rxjs/operators';
+import { concat, delay, MonoTypeOperatorFunction, retryWhen, take, throwError } from 'rxjs';
 import { LumberjackHttpDriverError } from '../errors/lumberjack-http-driver.error';
 
 export const retryWithDelay = <T>(maxRetries: number, delayMs: number): MonoTypeOperatorFunction<T> =>
