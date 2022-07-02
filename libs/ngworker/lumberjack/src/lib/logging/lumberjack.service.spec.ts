@@ -1,6 +1,5 @@
 import { StaticProvider } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-
 import { NoopConsoleModule } from '@internal/console-driver/test-util';
 import {
   createCriticalDriverLog,
@@ -22,7 +21,6 @@ import {
   SpyDriverModule,
 } from '@internal/test-util';
 import { LumberjackConsoleDriverModule } from '@ngworker/lumberjack/console-driver';
-
 import { lumberjackLogDriverConfigToken } from '../configuration/lumberjack-log-driver-config.token';
 import { LumberjackLogDriverConfig } from '../configuration/lumberjack-log-driver.config';
 import { LumberjackModule } from '../configuration/lumberjack.module';
@@ -32,9 +30,22 @@ import { lumberjackLogDriverToken } from '../log-drivers/lumberjack-log-driver.t
 import { LumberjackLevel } from '../logs/lumberjack-level';
 import { LumberjackLogPayload } from '../logs/lumberjack-log-payload';
 import { LumberjackTimeService } from '../time/lumberjack-time.service';
-
 import { LumberjackLogFactory } from './lumberjack-log-factory';
 import { LumberjackService } from './lumberjack.service';
+
+class SpyDriverError extends Error {
+  constructor(message: string = 'SpyDriverError') {
+    super(message);
+    this.name = 'SpyDriverError';
+
+    // Non-standard V8 function for maintaining a stack trace
+    const ErrorWithCaptureStackTrace = Error as unknown as Error & {
+      // eslint-disable-next-line @typescript-eslint/ban-types
+      captureStackTrace?: (error: Error, constructor: Function) => void;
+    };
+    ErrorWithCaptureStackTrace.captureStackTrace?.(this, this.constructor);
+  }
+}
 
 const noLogsConfig: Omit<LumberjackLogDriverConfig, 'identifier'> = {
   levels: [],
@@ -186,7 +197,7 @@ describe(LumberjackService.name, () => {
           ErrorThrowingDriver
         ];
         spyDriver.logDebug.mockImplementation(() => {
-          throw new Error('The hidden spy made an error');
+          throw new SpyDriverError();
         });
         const errorDebugSpy = jest.spyOn(errorDriver, 'logDebug');
         const errorErrorSpy = jest.spyOn(errorDriver, 'logError');
@@ -224,7 +235,7 @@ describe(LumberjackService.name, () => {
           NoopDriver
         ];
         spyDriver.logDebug.mockImplementation(() => {
-          throw new Error('The hidden spy made an error');
+          throw new SpyDriverError();
         });
         const errorDebugSpy = jest.spyOn(errorDriver, 'logDebug');
         const errorErrorSpy = jest.spyOn(errorDriver, 'logError');
@@ -315,7 +326,7 @@ describe(LumberjackService.name, () => {
         const spyDriver = logDrivers[0] as SpyDriver;
         const errorDriver = logDrivers[1] as ErrorThrowingDriver;
         spyDriver.logDebug.mockImplementation(() => {
-          throw new Error('The hidden spy made an error');
+          throw new SpyDriverError();
         });
         jest.spyOn(errorDriver, 'logDebug');
         jest.spyOn(errorDriver, 'logError');
@@ -522,32 +533,36 @@ describe(LumberjackService.name, () => {
     let spyDriver: SpyDriver;
 
     describe('when a log driver is registered', () => {
+      const scope = 'Verbose';
+
       it('debug logs are logged', () => {
-        lumberjack.log(logFactory.createDebugLog('').withScope('Test').build());
+        lumberjack.log(logFactory.createDebugLog('').withScope(scope).build());
 
         expect(spyDriver.logDebug).toHaveBeenCalledTimes(1);
-        expect(spyDriver.logDebug).toHaveBeenCalledWith(createDebugDriverLog(LumberjackLevel.Debug));
+        expect(spyDriver.logDebug).toHaveBeenCalledWith(createDebugDriverLog(LumberjackLevel.Debug, undefined, scope));
       });
 
       it('errors are logged', () => {
-        lumberjack.log(logFactory.createErrorLog('').withScope('Test').build());
+        lumberjack.log(logFactory.createErrorLog('').withScope(scope).build());
 
         expect(spyDriver.logError).toHaveBeenCalledTimes(1);
-        expect(spyDriver.logError).toHaveBeenCalledWith(createErrorDriverLog(LumberjackLevel.Error));
+        expect(spyDriver.logError).toHaveBeenCalledWith(createErrorDriverLog(LumberjackLevel.Error, undefined, scope));
       });
 
       it('info is logged', () => {
-        lumberjack.log(logFactory.createInfoLog('').withScope('Test').build());
+        lumberjack.log(logFactory.createInfoLog('').withScope(scope).build());
 
         expect(spyDriver.logInfo).toHaveBeenCalledTimes(1);
-        expect(spyDriver.logInfo).toHaveBeenCalledWith(createInfoDriverLog(LumberjackLevel.Info));
+        expect(spyDriver.logInfo).toHaveBeenCalledWith(createInfoDriverLog(LumberjackLevel.Info, undefined, scope));
       });
 
       it('warnings are logged', () => {
-        lumberjack.log(logFactory.createWarningLog('').withScope('Test').build());
+        lumberjack.log(logFactory.createWarningLog('').withScope(scope).build());
 
         expect(spyDriver.logWarning).toHaveBeenCalledTimes(1);
-        expect(spyDriver.logWarning).toHaveBeenCalledWith(createWarningDriverLog(LumberjackLevel.Warning));
+        expect(spyDriver.logWarning).toHaveBeenCalledWith(
+          createWarningDriverLog(LumberjackLevel.Warning, undefined, scope)
+        );
       });
     });
   });

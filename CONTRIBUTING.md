@@ -73,3 +73,7 @@ fix(release): need to depend on latest rxjs and zone.js
 
 The version in our package.json gets copied to the one we publish, and users need the latest of these.
 ```
+
+## ESLint parser
+
+As this workspace has a small amount of projects, we opt in to use the ESLint TypeScript parser globally (see the `parser` option in `.eslintrc.json`) in order to enable type-depending lint rules such as some from SonarLint.

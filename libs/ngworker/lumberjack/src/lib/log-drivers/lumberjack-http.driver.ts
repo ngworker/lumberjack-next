@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, NgZone } from '@angular/core';
-
+import { Inject, Injectable, NgZone, OnDestroy } from '@angular/core';
 import { LumberjackLog, LumberjackLogDriver, LumberjackLogDriverLog, LumberjackLogPayload } from '@ngworker/lumberjack';
-
+import { Subscription } from 'rxjs';
 import { lumberjackHttpDriverConfigToken } from '../configuration/lumberjack-http-driver-config.token';
 import { LumberjackHttpDriverInternalConfig } from '../configuration/lumberjack-http-driver-internal.config';
 import { LumberjackHttpLog } from '../logs/lumberjack-http.log';
@@ -16,14 +15,21 @@ import { retryWithDelay } from '../operators/retry-with-delay.operator';
  */
 @Injectable()
 export class LumberjackHttpDriver<TPayload extends LumberjackLogPayload | void = void>
-  implements LumberjackLogDriver<TPayload>
+  implements LumberjackLogDriver<TPayload>, OnDestroy
 {
   static driverIdentifier = 'LumberjackHttpDriver';
+
+  private subscriptions = new Subscription();
+
   constructor(
     private readonly http: HttpClient,
     @Inject(lumberjackHttpDriverConfigToken) readonly config: LumberjackHttpDriverInternalConfig,
     private readonly ngZone: NgZone
   ) {}
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
 
   /**
    * Send critical log to the log store.
@@ -95,12 +101,16 @@ export class LumberjackHttpDriver<TPayload extends LumberjackLogPayload | void =
     const httpLog: LumberjackHttpLog<TPayload> = { formattedLog, origin, log };
 
     this.ngZone.runOutsideAngular(() => {
-      this.http
-        .post<void>(storeUrl, httpLog)
-        .pipe(retryWithDelay(retryOptions.maxRetries, retryOptions.delayMs))
-        .subscribe(() => {
-          // No-op
-        });
+      this.subscriptions.add(
+        this.http
+          .post<void>(storeUrl, httpLog)
+          .pipe(retryWithDelay(retryOptions.maxRetries, retryOptions.delayMs))
+          // HTTP requests complete after
+          // eslint-disable-next-line rxjs-angular/prefer-composition
+          .subscribe(() => {
+            // No-op
+          })
+      );
     });
   }
 }

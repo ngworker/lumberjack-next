@@ -1,7 +1,11 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx"],
+  "plugins": ["@nrwl/nx", "etc", "rxjs", "rxjs-angular", "sonarjs"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["{apps,libs}/**/tsconfig.*?.json", "apps/**/*-e2e/tsconfig.json"]
+  },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -53,6 +57,24 @@
       "files": ["*.js", "*.jsx"],
       "extends": ["plugin:@nrwl/nx/javascript"],
       "rules": {}
+    },
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "extends": ["plugin:etc/recommended", "plugin:rxjs/recommended", "plugin:sonarjs/recommended"],
+      "rules": {
+        "etc/no-commented-out-code": "error",
+        "etc/no-const-enum": "error",
+        "sonarjs/cognitive-complexity": ["error", 8]
+      }
+    },
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "rxjs-angular/prefer-composition": [
+          "error",
+          { "checkDecorators": ["Component", "Directive", "Injectable", "NgModule", "Pipe"] }
+        ]
+      }
     }
   ]
 }

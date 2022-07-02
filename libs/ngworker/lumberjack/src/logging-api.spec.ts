@@ -5,7 +5,7 @@ import { LumberjackLogFactory, LumberjackLogger, LumberjackService, ScopedLumber
 describe('Logging API', () => {
   describe('Services', () => {
     it(`exposes ${LumberjackLogFactory.name}`, () => {
-      const sut = LumberjackLogger;
+      const sut = LumberjackLogFactory;
 
       expect(isClass(sut)).toBeTruthy();
     });
