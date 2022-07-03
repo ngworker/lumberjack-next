@@ -45,6 +45,8 @@
       "options": {
         "preset": "conventional",
         "tagPrefix": "v",
+        "push": true,
+        "preid": "beta",
         "postTargets": ["semver:publish", "semver:github"]
       }
     },

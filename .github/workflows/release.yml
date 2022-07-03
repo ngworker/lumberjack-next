@@ -25,6 +25,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
+    # Only release from the main branch
     if: github.ref == 'refs/heads/main'
 
     steps:
@@ -32,6 +33,7 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
+      # Set ups the git user for the Changelog commit
       - name: Setup git user to "🤖 NgWorker Bot"
         shell: bash
         run: git config user.email "-" && git config user.name "🤖 NgWorker Bot"
@@ -40,16 +42,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx nx version ngworker-lumberjack --releaseAs=${{ github.event.inputs.release_as }} --preid=rc
-
-      - name: Tag last-release
-        shell: bash
-        run: git tag -f last-release
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ inputs.github_token }}
-          branch: ${{ github.ref }}
-          force: true
-          tags: true
+        # Generates the changelog commit and tags and pushes them to Github.
+        # Use two post actions to Create a release in Github and for Publishing the package to NPM
+        run: npx nx version ngworker-lumberjack --releaseAs=${{ github.event.inputs.release_as }}

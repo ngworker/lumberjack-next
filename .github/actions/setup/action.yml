@@ -14,7 +14,7 @@ runs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-      # needed for nx affected command
+      # Needed for nx affected command, it set the BASE and HEAD env variables
     - name: Derive appropriate SHAs for base and head for `nx affected` commands
       uses: nrwl/nx-set-shas@v2
 
