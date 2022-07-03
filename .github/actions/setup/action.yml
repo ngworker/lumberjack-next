@@ -21,7 +21,7 @@ runs:
     - name: Use Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ github.event.inputs.node-version }}
+        node-version: ${{ inputs.node-version }}
         # This doesn't just set the registry url, but also sets
         # the right configuration in .npmrc that reads NPM token
         # from NPM_AUTH_TOKEN environment variable.
@@ -38,10 +38,10 @@ runs:
       uses: actions/cache@v3
       with:
         path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-node-${{ github.event.inputs.node-version }}-yarn-${{ hashFiles('yarn.lock') }}
+        key: ${{ runner.os }}-node-${{ inputs.node-version }}-yarn-${{ hashFiles('yarn.lock') }}
         restore-keys: |
-          ${{ runner.os }}-node-${{ github.event.inputs.node-version }}-yarn-
-          ${{ runner.os }}-node-${{ github.event.inputs.node-version }}-angular-
+          ${{ runner.os }}-node-${{ inputs.node-version }}-yarn-
+          ${{ runner.os }}-node-${{ inputs.node-version }}-angular-
     - name: Install dependencies
       shell: bash
-      run: yarn install
+      run: yarn install --immutable --immutable-cache
