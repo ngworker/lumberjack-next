@@ -75,6 +75,7 @@ jobs:
       number-of-agents: 4
 
   sonarcloud:
+    needs: dte_coordinator
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
