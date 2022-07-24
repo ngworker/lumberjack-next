@@ -9,6 +9,12 @@
       "options": {
         "jestConfig": "libs/internal/console-driver/test-util/jest.config.ts",
         "passWithNoTests": true
+      },
+      "configurations": {
+        "coverage": {
+          "codeCoverage": true,
+          "coverageReporters": ["lcov"]
+        }
       }
     },
     "lint": {
@@ -18,6 +24,13 @@
           "libs/internal/console-driver/test-util/**/*.ts",
           "libs/internal/console-driver/test-util/**/*.html"
         ]
+      },
+      "configurations": {
+        "report": {
+          "format": "json",
+          "force": true,
+          "outputFile": "reports/libs/internal/console-driver/test-util/lint/report.json"
+        }
       }
     }
   },

@@ -9,12 +9,25 @@
       "options": {
         "jestConfig": "libs/internal/test-util/jest.config.ts",
         "passWithNoTests": true
+      },
+      "configurations": {
+        "coverage": {
+          "codeCoverage": true,
+          "coverageReporters": ["lcov"]
+        }
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": ["libs/internal/test-util/**/*.ts", "libs/internal/test-util/**/*.html"]
+      },
+      "configurations": {
+        "report": {
+          "format": "json",
+          "force": true,
+          "outputFile": "reports/libs/internal/test-util/lint/report.json"
+        }
       }
     }
   },

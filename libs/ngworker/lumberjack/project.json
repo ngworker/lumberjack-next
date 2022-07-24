@@ -25,6 +25,12 @@
       "options": {
         "jestConfig": "libs/ngworker/lumberjack/jest.config.ts",
         "passWithNoTests": true
+      },
+      "configurations": {
+        "coverage": {
+          "codeCoverage": true,
+          "coverageReporters": ["lcov"]
+        }
       }
     },
     "lint": {
@@ -38,6 +44,13 @@
           "libs/ngworker/lumberjack/console-driver/**/*.ts",
           "libs/ngworker/lumberjack/console-driver/**/*.html"
         ]
+      },
+      "configurations": {
+        "report": {
+          "format": "json",
+          "force": true,
+          "outputFile": "reports/libs/ngworker/lumberjack/lint/report.json"
+        }
       }
     },
     "version": {
