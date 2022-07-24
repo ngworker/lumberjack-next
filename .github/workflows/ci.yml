@@ -44,7 +44,7 @@ jobs:
       # build: 2 tasks assigned at a time, 1 task per vCPU
       # e2e: 1 task assigned at a time, 1 task total
       parallel-commands-on-agents: |
-        yarn nx affected --target=lint --parallel=2 --max-warnings=0
+        yarn nx affected --target=lint --configuration=report --parallel=2 --max-warnings=0
         yarn nx affected --target=test --parallel=1 --ci --maxWorkers=2
         yarn nx affected --target=build --parallel=2
         yarn nx affected --target=e2e --exclude=lumberjack-app-e2e --parallel=1
@@ -73,3 +73,16 @@ jobs:
       # However, we don't have many projects or targets in this workspace, so we
       # lower the number of agents to reduce spent compute time.
       number-of-agents: 4
+
+  sonarcloud:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    # - name: Setup
+    #   uses: ./.github/actions/setup
+
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
