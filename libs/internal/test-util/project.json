@@ -20,6 +20,7 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["libs/internal/test-util/**/*.ts", "libs/internal/test-util/**/*.html"]
       },

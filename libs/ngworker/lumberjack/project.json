@@ -36,6 +36,7 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
           "libs/ngworker/lumberjack/**/*.ts",

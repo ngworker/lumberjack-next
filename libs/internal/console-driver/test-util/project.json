@@ -20,6 +20,7 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
           "libs/internal/console-driver/test-util/**/*.ts",
