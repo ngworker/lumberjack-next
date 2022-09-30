@@ -47,7 +47,8 @@
         "tagPrefix": "v",
         "push": true,
         "preid": "beta",
-        "postTargets": ["semver:publish", "semver:github"]
+        "syncVersions": true,
+        "postTargets": ["ngworker-lumberjack:publish", "ngworker-lumberjack:github"]
       }
     },
     "github": {
