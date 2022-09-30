@@ -8,7 +8,6 @@ async function configureCoverageReportPaths() {
   const coverageReportsPattern = coverageReports.join(',');
   const to = `sonar.javascript.lcov.reportPaths=${coverageReportsPattern}`;
 
-  console.log(to);
   await replaceInFile({
     files: sonarConfigurationPath,
     from: 'sonar.javascript.lcov.reportPaths=<PLACEHOLDER>',
@@ -21,7 +20,6 @@ async function configureLintReportPaths() {
   const lintReportsPattern = lintReports.join(',');
   const to = `sonar.eslint.reportPaths=${lintReportsPattern}`;
 
-  console.log(to);
   await replaceInFile({
     files: sonarConfigurationPath,
     from: 'sonar.eslint.reportPaths=<PLACEHOLDER>',
