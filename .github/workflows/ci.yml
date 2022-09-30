@@ -88,8 +88,8 @@ jobs:
       - name: Tests with coverage
         run: yarn nx affected --all --target=test --configuration=coverage --parallel=1 --maxWorkers=2
 
-      - name: Configure Sonar report paths
-        run: yarn configure-sonar-report-paths
+      # - name: Configure Sonar report paths
+      #   run: yarn configure-sonar-report-paths
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
