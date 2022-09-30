@@ -13,12 +13,12 @@
   },
   "private": true,
   "engines": {
-    "node": "16",
+    "node": "16.17.0",
     "npm": "Use the Yarn Classic (1.x) CLI instead of npm",
     "yarn": "1.22.19"
   },
   "volta": {
-    "node": "16",
+    "node": "16.17.0",
     "yarn": "1.22.19"
   },
   "dependencies": {
