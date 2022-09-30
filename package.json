@@ -13,12 +13,12 @@
   },
   "private": true,
   "engines": {
-    "node": "16.15.1",
+    "node": "16.17.0",
     "npm": "Use the Yarn Classic (1.x) CLI instead of npm",
     "yarn": "1.22.19"
   },
   "volta": {
-    "node": "16.15.1",
+    "node": "16.17.0",
     "yarn": "1.22.19"
   },
   "dependencies": {
@@ -43,6 +43,7 @@
     "@angular/cli": "14.0.4",
     "@angular/compiler-cli": "14.0.4",
     "@angular/language-service": "14.0.4",
+    "@jscutlery/semver": "^2.25.2",
     "@nrwl/cli": "14.3.6",
     "@nrwl/cypress": "14.3.6",
     "@nrwl/eslint-plugin-nx": "14.3.6",
@@ -65,6 +66,7 @@
     "jest": "27.5.1",
     "jest-preset-angular": "11.1.2",
     "ng-packagr": "14.0.2",
+    "ngx-deploy-npm": "^4.1.0",
     "nx": "14.3.6",
     "postcss": "^8.4.5",
     "postcss-import": "~14.1.0",

@@ -39,6 +39,30 @@
           "libs/ngworker/lumberjack/console-driver/**/*.html"
         ]
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional",
+        "tagPrefix": "v",
+        "push": true,
+        "preid": "beta",
+        "syncVersions": true,
+        "postTargets": ["ngworker-lumberjack:publish", "ngworker-lumberjack:github"]
+      }
+    },
+    "github": {
+      "executor": "@jscutlery/semver:github",
+      "options": {
+        "tag": "${tag}",
+        "notes": "${notes}"
+      }
+    },
+    "publish": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
     }
   },
   "tags": ["scope:public", "type:lib"],
