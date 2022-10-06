@@ -79,6 +79,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          # necessary for SonarCloud Scan
+          fetch-depth: 0
       - name: Setup
         uses: ./.github/actions/setup
       # Uses the cache generated in the distributed step (Needed for the sonar eslint reports).
@@ -92,7 +95,7 @@ jobs:
       #   run: yarn configure-sonar-report-paths
 
       - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
+        uses: sonarsource/sonarcloud-github-action@v1.7
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
