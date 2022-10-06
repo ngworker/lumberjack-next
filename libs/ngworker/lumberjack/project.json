@@ -30,7 +30,7 @@
         "coverage": {
           "codeCoverage": true,
           "ci": true,
-          "coverageReporters": ["lcov"]
+          "coverageReporters": ["lcovonly", "text-summary"]
         }
       }
     },
