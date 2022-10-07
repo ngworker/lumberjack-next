@@ -98,11 +98,6 @@ jobs:
       - name: Configure Sonar report paths
         run: yarn configure-sonar-report-paths
 
-      - name: Open SSH runner debug session
-        uses: ./.github/actions/ssh-runner
-        with:
-          ssh_gateway: ${{ secrets.SSH_GATEWAY_IP }}
-
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@v1.7
         env:
