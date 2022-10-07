@@ -4,7 +4,6 @@ import { LumberjackLog, LumberjackModule, LumberjackOptions } from '@ngworker/lu
 import { LumberjackConsoleDriverModule } from '@ngworker/lumberjack/console-driver';
 
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 
 const cypressLumberjackOptions: LumberjackOptions = {
   format({ level, message, scope }: LumberjackLog): string {
@@ -18,7 +17,7 @@ const cypressLumberjackOptions: LumberjackOptions = {
 
 @NgModule({
   bootstrap: [AppComponent],
-  declarations: [AppComponent, NxWelcomeComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     LumberjackModule.forRoot('Cypress' in window ? cypressLumberjackOptions : undefined),
