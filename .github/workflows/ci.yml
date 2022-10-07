@@ -77,6 +77,10 @@ jobs:
   sonarcloud:
     needs: dte_coordinator
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+      actions: read
     steps:
       - uses: actions/checkout@v3
         with:

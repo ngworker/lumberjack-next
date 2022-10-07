@@ -2,6 +2,12 @@ name: Open SSH debug session
 
 description: SSH into the GitHub runner. Run tmux attach once connected. Run exit to close the session.
 
+# A consumer must add the following permissions
+# permissions:
+#   id-token: write
+#   contents: read
+#   actions: read
+
 inputs:
   ssh_gateway:
     description: The gateway hostname address or IP address.
