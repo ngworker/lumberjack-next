@@ -65,24 +65,16 @@ Lumberjack is published as the `@ngworker/lumberjack` package.
 
 > For a complete walkthrough video please visit [@ngworker/lumberjack v2 - Show & Tell BLS024](https://youtu.be/OV1ONtLAJnI)
 
-To register Lumberjack, add `LumberjackModule.forRoot()` to your root or core Angular module or use the schematics.
-
-```shell
-ng add @ngworker/lumberjack
-```
-
-The `ng add` command will add the following code to your module.
+To register Lumberjack, add `LumberjackModule.forRoot()` to your root or core Angular module.
 
 ```ts
 // (...)
 import { LumberjackModule } from '@ngworker/lumberjack';
-import { LumberjackConsoleDriverModule } from '@ngworker/lumberjack/console-driver';
 
 @NgModule({
   imports: [
       // (...)
     LumberjackModule.forRoot(),
-    LumberjackConsoleDriverModule.forRoot(),
       // (...)
   ],
   // (...)
@@ -91,7 +83,7 @@ import { LumberjackConsoleDriverModule } from '@ngworker/lumberjack/console-driv
 
 You must also register the log driver modules for the log drivers that you want to enable.
 
-If you want to add the `LumberjackHttpDriver`, add the following code
+If you want to add the `LumberjackHttpDriver` and the `LumberjackConsoleDriver`, add the following code
 
 ```ts
 // (...)
