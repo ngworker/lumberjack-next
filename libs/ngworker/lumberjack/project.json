@@ -25,10 +25,18 @@
       "options": {
         "jestConfig": "libs/ngworker/lumberjack/jest.config.ts",
         "passWithNoTests": true
+      },
+      "configurations": {
+        "coverage": {
+          "codeCoverage": true,
+          "ci": true,
+          "coverageReporters": ["lcovonly", "text-summary"]
+        }
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
           "libs/ngworker/lumberjack/**/*.ts",
@@ -38,6 +46,13 @@
           "libs/ngworker/lumberjack/console-driver/**/*.ts",
           "libs/ngworker/lumberjack/console-driver/**/*.html"
         ]
+      },
+      "configurations": {
+        "report": {
+          "format": "json",
+          "force": true,
+          "outputFile": "reports/libs/ngworker/lumberjack/lint/report.json"
+        }
       }
     },
     "version": {
@@ -61,7 +76,8 @@
     "publish": {
       "executor": "ngx-deploy-npm:deploy",
       "options": {
-        "access": "public"
+        "access": "public",
+        "tag": "next"
       }
     }
   },

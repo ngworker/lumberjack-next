@@ -70,8 +70,16 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/lumberjack-app/**/*.ts", "apps/lumberjack-app/**/*.html"]
+      },
+      "configurations": {
+        "report": {
+          "format": "json",
+          "force": true,
+          "outputFile": "reports/apps/lumberjack-app/lint/report.json"
+        }
       }
     },
     "test": {
@@ -80,6 +88,13 @@
       "options": {
         "jestConfig": "apps/lumberjack-app/jest.config.ts",
         "passWithNoTests": true
+      },
+      "configurations": {
+        "coverage": {
+          "codeCoverage": true,
+          "ci": true,
+          "coverageReporters": ["lcovonly", "text-summary"]
+        }
       }
     },
     "use-lumberjack-bundle": {

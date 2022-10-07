@@ -20,6 +20,13 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/lumberjack-app-e2e/**/*.{js,ts}"]
+      },
+      "configurations": {
+        "report": {
+          "format": "json",
+          "force": true,
+          "outputFile": "reports/apps/lumberjack-app-e2e/lint/report.json"
+        }
       }
     }
   },

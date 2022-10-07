@@ -9,15 +9,30 @@
       "options": {
         "jestConfig": "libs/internal/console-driver/test-util/jest.config.ts",
         "passWithNoTests": true
+      },
+      "configurations": {
+        "coverage": {
+          "codeCoverage": true,
+          "ci": true,
+          "coverageReporters": ["lcovonly", "text-summary"]
+        }
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
           "libs/internal/console-driver/test-util/**/*.ts",
           "libs/internal/console-driver/test-util/**/*.html"
         ]
+      },
+      "configurations": {
+        "report": {
+          "format": "json",
+          "force": true,
+          "outputFile": "reports/libs/internal/console-driver/test-util/lint/report.json"
+        }
       }
     }
   },
