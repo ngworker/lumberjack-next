@@ -1,7 +1,6 @@
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { VERSION } from '@angular/platform-browser';
-
 import { createCriticalDriverLog, createDriverLog, repeatSideEffect, resolveDependency } from '@internal/test-util';
 import {
   LumberjackLevel,
@@ -12,11 +11,9 @@ import {
   LumberjackLogPayload,
   LumberjackModule,
 } from '@ngworker/lumberjack';
-
 import { LumberjackHttpDriverModule } from '../configuration/lumberjack-http-driver.module';
 import { LumberjackHttpDriverOptions } from '../configuration/lumberjack-http-driver.options';
 import { LumberjackHttpLog } from '../logs/lumberjack-http.log';
-
 import { LumberjackHttpDriver } from './lumberjack-http.driver';
 
 interface HttpDriverPayload extends LumberjackLogPayload {
@@ -95,32 +92,25 @@ describe(LumberjackHttpDriver.name, () => {
     jest.useFakeTimers('modern');
   });
 
-  describe('logs to a web API using the right log level', () => {
-    (
-      [
-        [LumberjackLevel.Critical, (driver) => driver.logCritical],
-        [LumberjackLevel.Debug, (driver) => driver.logDebug],
-        [LumberjackLevel.Error, (driver) => driver.logError],
-        [LumberjackLevel.Info, (driver) => driver.logInfo],
-        [LumberjackLevel.Trace, (driver) => driver.logTrace],
-        [LumberjackLevel.Warning, (driver) => driver.logWarning],
-      ] as ReadonlyArray<
-        [
-          LumberjackLogLevel,
-          (
-            driver: LumberjackLogDriver<HttpDriverPayload>
-          ) => (driverLog: LumberjackLogDriverLog<HttpDriverPayload>) => void
-        ]
-      >
-    ).forEach(([logLevel, logMethod]) => {
-      it(`sends a ${logLevel} level log to the configured URL`, () => {
+  describe.each([
+    [LumberjackLevel.Critical, (driver) => driver.logCritical],
+    [LumberjackLevel.Debug, (driver) => driver.logDebug],
+    [LumberjackLevel.Error, (driver) => driver.logError],
+    [LumberjackLevel.Info, (driver) => driver.logInfo],
+    [LumberjackLevel.Trace, (driver) => driver.logTrace],
+    [LumberjackLevel.Warning, (driver) => driver.logWarning],
+  ] as ReadonlyArray<[LumberjackLogLevel, (driver: LumberjackLogDriver<HttpDriverPayload>) => (driverLog: LumberjackLogDriverLog<HttpDriverPayload>) => void]>)(
+    'logs to a web API using the %s log level',
+    (logLevel, logMethod) => {
+      it('sends the driver log to the configured URL', () => {
         const expectedDriverLog = createDriverLog<HttpDriverPayload>(logLevel, logLevel, '', 'Test', analyticsPayload);
+
         logMethod(httpDriver).call(httpDriver, expectedDriverLog);
 
         expectRequest(httpTestingController, options, createHttpDriverLog(expectedDriverLog));
       });
-    });
-  });
+    }
+  );
 
   it('retries after two failures and then succeeds', () => {
     const expectedDriverLog = createCriticalDriverLog<HttpDriverPayload>(
