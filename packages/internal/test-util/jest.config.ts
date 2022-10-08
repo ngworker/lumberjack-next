@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: 'internal-console-driver-test-util',
-  preset: '../../../../jest.preset.js',
+  displayName: 'internal-test-util',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -9,8 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory:
-    '../../../../coverage/libs/internal/console-driver/test-util',
+  coverageDirectory: '../../../coverage/packages/internal/test-util',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

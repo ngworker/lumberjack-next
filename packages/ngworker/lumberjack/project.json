@@ -1,29 +1,29 @@
 {
   "projectType": "library",
-  "sourceRoot": "libs/ngworker/lumberjack/src",
+  "sourceRoot": "packages/ngworker/lumberjack/src",
   "prefix": "ngworker",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/ngworker/lumberjack"],
+      "outputs": ["dist/packages/ngworker/lumberjack"],
       "options": {
-        "project": "libs/ngworker/lumberjack/ng-package.json"
+        "project": "packages/ngworker/lumberjack/ng-package.json"
       },
       "configurations": {
         "production": {
-          "tsConfig": "libs/ngworker/lumberjack/tsconfig.lib.prod.json"
+          "tsConfig": "packages/ngworker/lumberjack/tsconfig.lib.prod.json"
         },
         "development": {
-          "tsConfig": "libs/ngworker/lumberjack/tsconfig.lib.json"
+          "tsConfig": "packages/ngworker/lumberjack/tsconfig.lib.json"
         }
       },
       "defaultConfiguration": "production"
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/ngworker/lumberjack"],
+      "outputs": ["coverage/packages/ngworker/lumberjack"],
       "options": {
-        "jestConfig": "libs/ngworker/lumberjack/jest.config.ts",
+        "jestConfig": "packages/ngworker/lumberjack/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -39,19 +39,19 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/ngworker/lumberjack/**/*.ts",
-          "libs/ngworker/lumberjack/**/*.html",
-          "libs/ngworker/lumberjack/http-driver/**/*.ts",
-          "libs/ngworker/lumberjack/http-driver/**/*.html",
-          "libs/ngworker/lumberjack/console-driver/**/*.ts",
-          "libs/ngworker/lumberjack/console-driver/**/*.html"
+          "packages/ngworker/lumberjack/**/*.ts",
+          "packages/ngworker/lumberjack/**/*.html",
+          "packages/ngworker/lumberjack/http-driver/**/*.ts",
+          "packages/ngworker/lumberjack/http-driver/**/*.html",
+          "packages/ngworker/lumberjack/console-driver/**/*.ts",
+          "packages/ngworker/lumberjack/console-driver/**/*.html"
         ]
       },
       "configurations": {
         "report": {
           "format": "json",
           "force": true,
-          "outputFile": "reports/libs/ngworker/lumberjack/lint/report.json"
+          "outputFile": "reports/packages/ngworker/lumberjack/lint/report.json"
         }
       }
     },

@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: 'ngworker-lumberjack',
-  preset: '../../../jest.preset.js',
+  displayName: 'lumberjack-app',
+  preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/ngworker/lumberjack',
+  coverageDirectory: '../../coverage/e2e/lumberjack-app',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

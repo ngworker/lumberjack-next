@@ -44,5 +44,9 @@
     "build": {
       "dependsOn": [{ "projects": "dependencies", "target": "build" }]
     }
+  },
+  "workspaceLayout": {
+    "appsDir": "e2e",
+    "libsDir": "packages"
   }
 }
