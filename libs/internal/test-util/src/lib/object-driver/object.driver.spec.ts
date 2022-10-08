@@ -6,7 +6,7 @@ import {
   LumberjackLogDriverLog,
   lumberjackLogDriverToken,
   LumberjackLogLevel,
-  LumberjackModule
+  LumberjackModule,
 } from '@ngworker/lumberjack';
 import { resolveDependency } from '../angular/resolve-dependency';
 import { ObjectDriverModule } from './object-driver.module';

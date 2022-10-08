@@ -5,7 +5,7 @@ import {
   LumberjackLogDriverLog,
   lumberjackLogDriverToken,
   LumberjackLogLevel,
-  LumberjackModule
+  LumberjackModule,
 } from '@ngworker/lumberjack';
 import { resolveDependency } from '../angular/resolve-dependency';
 import { repeatSideEffect } from '../functions/repeat-side-effect';
