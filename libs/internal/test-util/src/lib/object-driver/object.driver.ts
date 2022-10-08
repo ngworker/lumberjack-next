@@ -20,6 +20,7 @@ export class ObjectDriver implements LumberjackLogDriver<ObjectPayload> {
     private readonly objectService: ObjectService
   ) {}
 
+  /* istanbul ignore next */
   logCritical({ log }: LumberjackLogDriverLog<ObjectPayload>): void {
     this.objectService.log(log.payload);
   }
@@ -28,18 +29,22 @@ export class ObjectDriver implements LumberjackLogDriver<ObjectPayload> {
     this.objectService.log(log.payload);
   }
 
+  /* istanbul ignore next */
   logError({ log }: LumberjackLogDriverLog<ObjectPayload>): void {
     this.objectService.log(log.payload);
   }
 
+  /* istanbul ignore next */
   logInfo({ log }: LumberjackLogDriverLog<ObjectPayload>): void {
     this.objectService.log(log.payload);
   }
 
+  /* istanbul ignore next */
   logTrace({ log }: LumberjackLogDriverLog<ObjectPayload>): void {
     this.objectService.log(log.payload);
   }
 
+  /* istanbul ignore next */
   logWarning({ log }: LumberjackLogDriverLog<ObjectPayload>): void {
     this.objectService.log(log.payload);
   }

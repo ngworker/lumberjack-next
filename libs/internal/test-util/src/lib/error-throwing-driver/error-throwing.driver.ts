@@ -18,6 +18,7 @@ export class ErrorThrowingDriver implements LumberjackLogDriver {
 
   constructor(@Inject(errorThrowingDriverConfigToken) readonly config: ErrorThrowingDriverConfig) {}
 
+  /* istanbul ignore next */
   logCritical({ formattedLog }: LumberjackLogDriverLog): void {
     this.log(formattedLog);
   }
@@ -30,14 +31,17 @@ export class ErrorThrowingDriver implements LumberjackLogDriver {
     this.log(formattedLog);
   }
 
+  /* istanbul ignore next */
   logInfo({ formattedLog }: LumberjackLogDriverLog): void {
     this.log(formattedLog);
   }
 
+  /* istanbul ignore next */
   logTrace({ formattedLog }: LumberjackLogDriverLog): void {
     this.log(formattedLog);
   }
 
+  /* istanbul ignore next */
   logWarning({ formattedLog }: LumberjackLogDriverLog): void {
     this.log(formattedLog);
   }

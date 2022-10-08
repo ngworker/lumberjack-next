@@ -31,6 +31,7 @@ export class SpyDriver<TPayload extends LumberjackLogPayload | void = void>
   /**
    * Reset tracking on spies.
    */
+  /* istanbul ignore next */
   reset(): void {
     this.logCritical.mockClear();
     this.logDebug.mockClear();
