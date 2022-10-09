@@ -80,7 +80,7 @@ As this workspace has a small amount of projects, we opt in to use the ESLint Ty
 
 ## Creating new applications
 
-In this workspace we have chosen to use the **npm nx preset** which has the following layout:
+In this workspace we have chosen to use the `npm` Nx preset which has the following workspace layout:
 
 ```json
   "workspaceLayout": {
@@ -95,7 +95,7 @@ However, this is semantically incorrect and we have also decided that our applic
 
 When creating a new app there are some steps that need to be taken in order to bypass the default behavior of the **npm nx preset**.
 
-First, we need to modify the workspace layout inside the `nx.json` file from
+First, we need to **temporarily** modify the workspace layout inside the `nx.json` file from
 
 ```json
   "workspaceLayout": {
@@ -117,10 +117,10 @@ Once that's completed we can create our application with the corresponding gener
 
 Finally we MUST revert the changes made to the `nx.json` file.
 
-I cases where the application generator create a companion e2e project, we need to move it to the `e2e` folder. This can be done using the `@nrwl/workspace:move` command.
+In cases where the application generator creates a companion e2e project, we need to move it to the `e2e` folder. This is done using the `@nrwl/workspace:move` generator.
 
 ```bash
-nx generate @nrwl/workspace:move <path/app-name> --projectName=<app-name>
+nx generate move [<grouping-folder>/]<e2e-project-directory-name> --project-name=<e2e-project-name>
 ```
 
 > Notice that this is only possible after reverting the nx.json file back to its original form.
