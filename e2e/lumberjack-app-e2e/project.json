@@ -7,11 +7,11 @@
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "e2e/lumberjack-app-e2e/cypress.json",
-        "devServerTarget": "example:serve:development"
+        "devServerTarget": "lumberjack-app:serve:development"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "example:serve:production"
+          "devServerTarget": "lumberjack-app:serve:production"
         }
       }
     },
@@ -31,5 +31,5 @@
     }
   },
   "tags": ["scope:internal", "type:e2e"],
-  "implicitDependencies": ["example"]
+  "implicitDependencies": ["lumberjack-app"]
 }

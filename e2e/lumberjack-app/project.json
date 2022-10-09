@@ -1,21 +1,21 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "packages/example/src",
+  "sourceRoot": "e2e/lumberjack-app/src",
   "prefix": "ngworker",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/example",
-        "index": "packages/example/src/index.html",
-        "main": "packages/example/src/main.ts",
-        "polyfills": "packages/example/src/polyfills.ts",
-        "tsConfig": "packages/example/tsconfig.app.json",
+        "outputPath": "dist/e2e/lumberjack-app",
+        "index": "e2e/lumberjack-app/src/index.html",
+        "main": "e2e/lumberjack-app/src/main.ts",
+        "polyfills": "e2e/lumberjack-app/src/polyfills.ts",
+        "tsConfig": "e2e/lumberjack-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["packages/example/src/favicon.ico", "packages/example/src/assets"],
-        "styles": ["packages/example/src/styles.scss"],
+        "assets": ["e2e/lumberjack-app/src/favicon.ico", "e2e/lumberjack-app/src/assets"],
+        "styles": ["e2e/lumberjack-app/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -34,8 +34,8 @@
           ],
           "fileReplacements": [
             {
-              "replace": "packages/example/src/environments/environment.ts",
-              "with": "packages/example/src/environments/environment.prod.ts"
+              "replace": "e2e/lumberjack-app/src/environments/environment.ts",
+              "with": "e2e/lumberjack-app/src/environments/environment.prod.ts"
             }
           ],
           "outputHashing": "all"
@@ -55,10 +55,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "example:build:production"
+          "browserTarget": "lumberjack-app:build:production"
         },
         "development": {
-          "browserTarget": "example:build:development"
+          "browserTarget": "lumberjack-app:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -66,28 +66,28 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "example:build"
+        "browserTarget": "lumberjack-app:build"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/example/**/*.ts", "packages/example/**/*.html"]
+        "lintFilePatterns": ["e2e/lumberjack-app/**/*.ts", "e2e/lumberjack-app/**/*.html"]
       },
       "configurations": {
         "report": {
           "format": "json",
           "force": true,
-          "outputFile": "reports/packages/example/lint/report.json"
+          "outputFile": "reports/e2e/lumberjack-app/lint/report.json"
         }
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/example"],
+      "outputs": ["coverage/e2e/lumberjack-app"],
       "options": {
-        "jestConfig": "packages/example/jest.config.ts",
+        "jestConfig": "e2e/lumberjack-app/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -111,8 +111,8 @@
           "yarn delete-path-alias @ngworker/lumberjack",
           "yarn delete-path-alias @ngworker/lumberjack/console-driver",
           "yarn delete-path-alias @ngworker/lumberjack/http-driver",
-          "mkdir -p packages/example/node_modules/@ngworker/lumberjack",
-          "cp -r dist/packages/ngworker/lumberjack packages/example/node_modules/@ngworker/lumberjack"
+          "mkdir -p e2e/lumberjack-app/node_modules/@ngworker/lumberjack",
+          "cp -r dist/packages/ngworker/lumberjack e2e/lumberjack-app/node_modules/@ngworker/lumberjack"
         ],
         "parallel": false
       }
