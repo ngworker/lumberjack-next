@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'lumberjack-app',
+  displayName: 'example',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/e2e/lumberjack-app',
+  coverageDirectory: '../../coverage/packages/example',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
