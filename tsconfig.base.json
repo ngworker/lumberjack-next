@@ -10,24 +10,14 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@internal/console-driver/test-util": [
-        "packages/internal/console-driver/test-util/src/index.ts"
-      ],
-      "@internal/test-util": [
-        "packages/internal/test-util/src/index.ts"
-      ]
+      "@internal/console-driver/test-util": ["packages/internal/console-driver/test-util/src/index.ts"],
+      "@internal/test-util": ["packages/internal/test-util/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }
