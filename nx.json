@@ -39,7 +39,7 @@
       "style": "scss"
     }
   },
-  "defaultProject": "example",
+  "defaultProject": "examples-lumberjack-app",
   "targetDefaults": {
     "build": {
       "dependsOn": [
