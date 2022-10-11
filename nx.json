@@ -39,10 +39,19 @@
       "style": "scss"
     }
   },
-  "defaultProject": "lumberjack-app",
+  "defaultProject": "examples-lumberjack-app",
   "targetDefaults": {
     "build": {
-      "dependsOn": [{ "projects": "dependencies", "target": "build" }]
+      "dependsOn": [
+        {
+          "projects": "dependencies",
+          "target": "build"
+        }
+      ]
     }
+  },
+  "workspaceLayout": {
+    "appsDir": "e2e",
+    "libsDir": "packages"
   }
 }

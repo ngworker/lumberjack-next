@@ -4,7 +4,7 @@
   "plugins": ["@nrwl/nx", "etc", "rxjs", "rxjs-angular", "sonarjs"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": ["{apps,libs}/**/tsconfig.*?.json", "apps/**/*-e2e/tsconfig.json"]
+    "project": ["{e2e,packages}/**/tsconfig.*?.json", "e2e/**/*-e2e/tsconfig.json"]
   },
   "overrides": [
     {

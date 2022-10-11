@@ -1,13 +1,13 @@
 {
   "projectType": "library",
-  "sourceRoot": "libs/internal/console-driver/test-util/src",
+  "sourceRoot": "packages/internal/test-util/src",
   "prefix": "ngworker",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/internal/console-driver/test-util"],
+      "outputs": ["coverage/packages/internal/test-util"],
       "options": {
-        "jestConfig": "libs/internal/console-driver/test-util/jest.config.ts",
+        "jestConfig": "packages/internal/test-util/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -22,16 +22,13 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/internal/console-driver/test-util/**/*.ts",
-          "libs/internal/console-driver/test-util/**/*.html"
-        ]
+        "lintFilePatterns": ["packages/internal/test-util/**/*.ts", "packages/internal/test-util/**/*.html"]
       },
       "configurations": {
         "report": {
           "format": "json",
           "force": true,
-          "outputFile": "reports/libs/internal/console-driver/test-util/lint/report.json"
+          "outputFile": "reports/packages/internal/test-util/lint/report.json"
         }
       }
     }
